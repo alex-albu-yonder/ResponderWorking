@@ -1,0 +1,17 @@
+{
+     "android": {
+         "release": {
+             "keystore": ".\\android\\GenericAndroidSigningKey.jks",
+             "storePassword": "V3rklizan",
+             "alias": "umoappkey",
+             "password" : "V3rklizan",
+             "keystoreType": "JKS"
+         }
+     },
+     "ios": {
+         "debug" : {
+             "codeSignIdentity" : "",
+             "provisioningProfile" : ""
+         }
+     }
+ }

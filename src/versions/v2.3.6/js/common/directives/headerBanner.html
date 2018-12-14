@@ -1,0 +1,24 @@
+﻿<div class="headerContainer headerBanner">
+    <div class="headerLeft">
+        <div class="centerDiv touchArea touchAreaHeader" ng-show="prBack">
+            <div di-backbutton />
+        </div>
+    </div>
+
+    <div class="headerMiddle text-center centerDiv">
+        <div ng-bind="prHeaderFirstLine" />
+        <div i18n="{{prHeaderFirstLineLocalized}}" />
+        <div ng-bind="prHeaderSecondLine" />
+        <div i18n="{{prHeaderSecondLineLocalized}}" />
+    </div>
+
+    <div class="headerRight">
+        <div class="centerDiv touchArea touchAreaHeader" ng-show="prHome">
+            <div di-homebutton />
+        </div>
+
+        <div class="centerDiv touchArea touchAreaHeader" ng-show="prAbout">
+            <div di-aboutbutton />
+        </div>
+    </div>
+</div>

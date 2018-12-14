@@ -1,0 +1,30 @@
+{
+  "security": {
+    "standardCredentials": {
+      "username": "richardvzandwijk@gmail.com",
+      "password": "test"
+    }
+  },
+  "pushNotifications": {
+    "baseUrl": "http://81.4.114.18:49713/PushNotificationService/"
+  },
+  "settings": {
+    "alternativeUrls": {
+    }
+  },
+  "testData": {
+    "overrideCareRequests":  true,
+    "manualCareRequest": {
+      "SubscriberId": "8f10d4c8-3615-e711-b659-842b2b0a5611",
+      "Reason": "Some weird reason",
+      "SessionId": "9abd6ef7-ac38-4778-8248-1283c1938fb0",
+      "Status": 3,
+      "SubscriberName": "Richard",
+      "SubscriberPhoneNumber": "06234234023",
+      "Type": "AutoAssist",
+      "IsWithSpeech": true
+    },
+    "pushToken": "235234234"
+  },
+  "debug": false
+}

@@ -1,0 +1,20 @@
+﻿<div class="page">
+
+    <header di-header-banner pr-back="true" pr-home="false" pr-header-first-line-localized="{{title}}" />
+
+    <div class="contentWithoutSubs">
+        <input type="text" i18n-placeholder="_TypeToFilter_" autofocus class="contentPadding input-block-level" ng-model="filterText" />
+        <div class="list" ng-if="item.Name" 
+             ng-repeat="item in (filteredList = (selectorOptions.dataSet | filter: { Name : ''} | filter:selectorOptions.filters 
+                | filter:filterText) | limitTo: pageLimit)">
+            <div class="imgInlineHeading " ng-click="selectItem(item)">
+                <h4 ng-bind="item.Name"></h4>
+            </div>
+        </div>
+        <div ng-show="pageLimit < filteredList.length"
+             ng-click="increasePageLimit()"
+             i18n="_ClickToLoadMore_"
+             class="contentPadding centerDiv"></div>
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+﻿<div class="page">
+    <header di-header-banner pr-back="true" pr-home="true"
+            pr-header-first-line="subscriberInfo.Identity.ShortName" pr-header-second-line-localized="_NewNote_Title_" />
+
+    <div class="contentWithoutSubs contentPadding textGray">
+        <form name="newNoteForm" novalidate>
+
+            <h4 class="textGreen" i18n="_NewNote_Subject_" />
+            <div class="error" ng-show="submitted && newNoteForm.subject.$invalid" i18n="_Required_" />
+            <input name="subject" class="inputFullWidth" maxlength="{{maxTitleFieldLength}}" required type="text" 
+                   di-keyboard-helper-target di-capitalize-first ng-model="newNote.subject" />
+
+            <h4 class="textGreen" i18n="_NewNote_Content_" />
+            <div class="error" ng-show="submitted && newNoteForm.content.$invalid" i18n="_Required_" />
+            <textarea name="content" required class="inputFullWidth" rows="3" ng-model="newNote.content" />
+
+            <div class="insertPhotoArea">
+                <div class="touchArea" ng-click="loading || setPicture()">
+                    <span class="textGray" i18n="_NewNote_Picture_" />
+                    <img class="pull-right" src="../../shared/img/camera-normal_72x72.png" width="36" height="36" />
+                </div>
+
+                <img ng-show="newNote.photo" ng-src="{{base64StringPrefix + newNote.photo}}" />
+            </div>
+
+            <hr />
+
+            <div class="upperAndLowerPadding">
+                <di-toggle-switch pr-toggle-switch-id="crmNote" class="pull-right" ng-model="newNote.crmNote"></di-toggle-switch>
+
+                <span i18n="_NewNote_CrmNote_"></span>
+            </div>
+            <div class="upperAndLowerPadding">
+                <di-toggle-switch pr-toggle-switch-id="callCenterNote" class="pull-right" ng-model="newNote.callcenterNote"></di-toggle-switch>
+
+                <span i18n="_NewNote_CallNote_"></span>
+            </div>
+        </form>
+    </div>
+
+    <footer class="text-center">
+        <div class="centerDiv">
+            <div class="touchArea touchAreaWidth">
+                <button class="buttonTransparent" ng-disabled="loading" type="button" ng-click="addNewNote()">
+                    <img src="../../shared/img/actions/Approved_white_128x128.png" class="smallImageSize" />
+                    <div i18n="_Accept_"></div>
+                </button>
+            </div>
+        </div>
+    </footer>
+</div>
