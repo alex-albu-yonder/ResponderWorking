@@ -91,6 +91,6 @@
     <plugin name="cordova-plugin-camera" spec="~4.0.3" />
     <plugin name="cordova-support-google-services" spec="1.1.0" />
     <plugin name="phonegap-plugin-push" spec="^2.2.3" />
-    <engine name="ios" spec="4.5.5" />
+    <engine name="ios" spec="^4.5.5" />
     <engine name="android" spec="^7.1.4" />
 </widget>
