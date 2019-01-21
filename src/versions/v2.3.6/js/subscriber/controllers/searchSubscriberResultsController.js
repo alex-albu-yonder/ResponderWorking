@@ -67,7 +67,7 @@
                 $scope.submitted = true;
 
                 if ($scope.searchSubscriberForm.$valid && $scope.searchText !== $routeParams.searchText) {
-                    var linkToNavigate = "/searchSubscriberResults/" + $scope.searchText;
+                    var linkToNavigate = "/searchSubscriberResults/" + sanitizeSearchText($scope.searchText);
                     if ($routeParams.searchText) {
                         navigationService.navigateAndReplace(linkToNavigate);
                     }
@@ -88,6 +88,11 @@
 
             function searchSubscribersLoaded(data) {
                 searchSubscribersViewModel.addData(data);
+            }
+
+            function sanitizeSearchText(searchText) {
+                var sanitizedSearchText = searchText.replace(/\//g, "-");
+                return sanitizedSearchText;
             }
         }
 );
