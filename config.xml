@@ -1,9 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
-<widget android-versionCode="20206038" id="verklizan.umox.mobile" ios-CFBundleVersion="2020603" version="2.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-=======
 <widget android-versionCode="20207018" id="verklizan.umox.mobile" ios-CFBundleVersion="2020701" version="2.2.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
->>>>>>> master
     <name>Responder</name>
     <description>
     An app to connect with the umo platform
