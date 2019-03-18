@@ -75,13 +75,10 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>need location access to show route information</string>
     </edit-config>
-<<<<<<< HEAD
     <config-file parent="/manifest/application" target="AndroidManifest.xml">
         <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
         <meta-data android:name="firebase_crash_collection_enabled" android:value="false" />
     </config-file>
-=======
->>>>>>> 21ded3d9523e6a66e132d7b259d812303d566851
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <plugin name="cordova-plugin-geolocation" spec="~4.0.1" />
