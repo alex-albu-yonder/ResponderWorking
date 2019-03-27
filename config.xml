@@ -1,12 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="20207018" id="verklizan.umox.mobile" ios-CFBundleVersion="2020701" version="2.2.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="20207018" id="verklizan.umox.mobile" ios-CFBundleVersion="2020701" version="2.2.7" 
+    xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Responder</name>
     <description>
     An app to connect with the umo platform
-  </description>
+    </description>
     <author email="info@verklizan.com" href="http://www.verklizan.com">
     Verklizan RD
-  </author>
+    </author>
     <content src="index.html" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
