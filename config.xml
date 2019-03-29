@@ -72,7 +72,7 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
         <string>photo library is used for adding pictures to subscriber notes</string>
     </edit-config>
-    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
         <string>need location access to show route information</string>
     </edit-config>
     <config-file parent="/manifest/application" target="AndroidManifest.xml">
