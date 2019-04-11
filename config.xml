@@ -33,6 +33,7 @@
         <splash density="port-xhdpi" src="config/splashscreen/screen.png"/>
     </platform>
     <platform name="ios">
+        <resource-file src="GoogleService-Info.plist"/>
         <preference name="AutoHideSplashScreen" value="false"/>
         <preference name="ShowSplashScreenSpinner" value="false"/>
         <icon height="167" src="config/icons/ResponderApp_Icon-167.png" width="167"/>
