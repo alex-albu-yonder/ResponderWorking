@@ -1,0 +1,32 @@
+﻿<div class="page">
+    <header di-header-banner pr-back="true" pr-home="true" pr-header-first-line-localized="_MessagesDetail_Title_"></header>
+    
+    <div class="contentWithoutSubs contentPadding">
+        <h4 ng-bind="message.CreatedBy" ></h4>
+
+        <hr />
+
+        <div class="textGray">
+            <p class="messageSubject textWrappingBreakWord" ng-bind="message.Subject" ></p>
+
+            <span i18n="_NewMessage_ValidToDate_"></span>:
+            <br />
+            <span ng-bind-with-default="message.ValidPeriod.ToDate | MStoJSDateTime" pr-default-localized-key="_Unknown_"></span>
+        </div>
+
+        <hr />
+
+        <div class="textBlue" ng-bind="message.Content" ></div>
+    </div>
+
+    <footer class="text-center">
+        <div class="centerDiv">
+            <div class="touchArea touchAreaWidth">
+                <button class="buttonTransparent" type="button" ng-click="toNewMessage()">
+                    <img src="../../shared/img/messages-white_72x72.png" width="36" height="36" />
+                    <div i18n="_NewMessage_Title_"></div>
+                </button>
+            </div>
+        </div>
+    </footer>
+</div>

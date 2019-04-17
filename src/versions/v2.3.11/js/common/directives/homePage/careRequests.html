@@ -1,0 +1,42 @@
+﻿<!--Care request switch current and history-->
+<nav class="subPageNavigation grayOutDisabled">
+
+    <!--There may be no space between the different spans to evenly give 50% of the page to the apps-->
+    <span class="mediumContentPadding touchArea halfOfPage" ng-click="showTodaysCareRequests()" ng-disabled="showOnlyToday">
+        <img src="../../shared/img/actions/CareReqCur_black_32x32.png" class="x-smallImageSize" />
+    </span><span class="mediumContentPadding touchArea halfOfPage" ng-click="showPreviousCareRequests()" ng-disabled="!showOnlyToday">
+        <img src="../../shared/img/actions/CareReqHis_black_32x32.png" class="x-smallImageSize" />
+    </span>
+</nav>
+
+<!--Current care requests -->
+<div ng-switch="showOnlyToday">
+    <div ng-switch-when="true">
+        <div class="searchControls contentPadding" ng-show="currentCareRequests.length == 0">
+            <div class="textGray" i18n="_Home_NoCareRequests_"></div>
+        </div>
+
+        <div class="list" ng-repeat="row in currentCareRequests">
+            <div class="media-body" ng-click="toCareRequestDetail(row.SessionId)">
+                <care-request-list-item pr-navigation-from-list-item-enabled="false"
+                                        pr-care-request-item="row"
+                                        pr-care-request-limited-reason="true"
+                                        pr-show-speech-icon="true"></care-request-list-item>
+            </div>
+        </div>
+    </div>
+
+    <div ng-switch-when="false">
+        <div class="searchControls contentPadding" ng-show="previousCareRequests.length === 0">
+            <div class="textGray" i18n="_Home_NoCareRequestsHistory_"></div>
+        </div>
+
+        <div class="list" ng-repeat="row in previousCareRequests">
+            <div class="media-body" ng-click="toCareRequestDetail(row.SessionId)">
+                <care-request-list-item pr-navigation-from-list-item-enabled="false"
+                                        pr-care-request-item="row"
+                                        pr-care-request-limited-reason="true"></care-request-list-item>
+            </div>
+        </div>
+    </div>
+</div>

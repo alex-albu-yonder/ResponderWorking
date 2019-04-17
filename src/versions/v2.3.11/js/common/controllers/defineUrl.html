@@ -1,0 +1,49 @@
+﻿<div class="page">
+    <header di-header-banner pr-header-first-line-localized="_FirstStartUrl_Title_" ></header>
+
+    <div class="contentWithoutSubs contentPadding">
+        <fieldset>
+            <legend class="textGreen" i18n="_Settings_Url_" ></legend>
+            <form name="urlForm" novalidate>
+                <div>
+                    <label i18n="_Settings_Host_"></label>
+                    <div ng-show="urlForm.fUrl.$invalid && isSubmitted">
+                        <span ng-show="urlForm.fUrl.$error.required" i18n="_Settings_UrlRequired_" class="error"></span>
+                        <span ng-show="urlForm.fUrl.$error.url" i18n="_Settings_UrlInvalidFormat_" class="error"></span>
+                    </div>
+
+                    <input name="fUrl" class="input-FullWidth" type="url" i18n-placeholder="_FirstStartUrl_HostPlaceholder_"
+                           required di-keyboard-helper-target ng-model="baseUrl.host" />
+                </div>
+                <div>
+                    <label i18n="_Settings_Port_"></label>
+                    <input class="input-FullWidth" type="number" i18n-placeholder="_FirstStartUrl_PortPlaceholder_"
+                           di-keyboard-helper-target ng-model="baseUrl.port" />
+                </div>
+                <div>
+                    <label i18n="_Settings_Path_"></label>
+                    <div ng-show="urlForm.fPath.$invalid && isSubmitted">
+                        <span ng-show="urlForm.fPath.$error.required" i18n="_Settings_PathRequired_" class="error"></span>
+                    </div>
+                    <input name="fPath" class="input-FullWidth" type="text" i18n-placeholder="_FirstStartUrl_PathPlaceholder_"
+                           required di-keyboard-helper-target ng-model="baseUrl.path" />
+                </div>
+            </form>
+
+            <!--JvR: downside of this keyboardhelper is that it will create a whitespace of 200px which looks not that nice -->
+        </fieldset>
+        <div di-keyboard-helper ></div>
+
+    </div>
+
+    <footer class="text-center">
+        <div class="centerDiv">
+            <div class="touchArea touchAreaWidth">
+                <button class="buttonTransparent" type="button" ng-click="next()">
+                    <img src="../../shared/img/forward-arrow-white_35x35.png" width="36" height="36" />
+                    <div i18n="_FirstStart_NextPage_"></div>
+                </button>
+            </div>
+        </div>
+    </footer>
+</div>

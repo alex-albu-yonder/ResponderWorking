@@ -1,0 +1,46 @@
+﻿<div class="subscriberPageMeds page">
+    <header di-header-banner pr-back="true" pr-home="true" 
+        pr-header-first-line="profileInfo.Identity.ShortName" pr-header-second-line-localized="_SubscriberPageMeds_Title_" />
+
+    <div class="content">
+        <nav di-subpagetab pr-header-index="2" />
+
+        <div class="subcontent contentPadding">
+            <fieldset>
+                <legend class="textGreen" i18n="_SubscriberPageMeds_Medical_" />
+                
+                <div ng-show="medicalInfo.Rows.length == 0">
+                    <p class="textGray" i18n="_SubscriberPageMeds_MedicalNoData_" />
+                </div>
+
+                <div ng-repeat="row in medicalInfo.Rows">
+                    <h5>{{row.MedicalCondition.Name}}</h5>
+                    <span class="textGray">{{row.MedicalConditionValue.Name}} ({{row.MedicalPriority.Name}})</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend class="textGreen" i18n="_SubscriberPageMeds_Medication_" />
+
+                <div ng-show="medicationInfo.Rows.length == 0">
+                    <p class="textGray" i18n="_SubscriberPageMeds_MedicationNoData_" />
+                </div>
+
+                <div ng-repeat="row in medicationInfo.Rows">
+                    <h5>{{row.Medicine.Name}}</h5>
+                    <span class="textGray">({{row.MedicalPriority.Name}})</span>
+                </div>
+            </fieldset>
+
+            <fieldset ng-show="teleMedicine.length > 0">
+                <legend class="textGreen" >Tele Medicine</legend>
+
+                <div ng-repeat="row in teleMedicine">
+                    <h5>Medical data {{$index + 1}}</h5>
+                    <span ng-click="navigateToTelemedicine($index)" class="textGray">({{row}})</span>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+</div>

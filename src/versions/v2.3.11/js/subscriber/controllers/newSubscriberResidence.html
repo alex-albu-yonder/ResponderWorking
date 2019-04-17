@@ -1,0 +1,52 @@
+﻿<div class="newSubscriberResidence page">
+    <header di-header-banner pr-back="true" pr-home="false" pr-header-first-line-localized="_NewSubscriberResidence_Title_" />
+
+    <div class="contentWithoutSubs contentPadding">
+        <form name="newSubscriberForm" novalidate>
+            <label for="street">
+                <span i18n="_NewSubscriberResidence_InputStreet_"></span> *
+            </label>
+            <div class="error" ng-show="newSubscriberForm.$submitted && !newResidence.street" i18n="_Required_" />
+            <input id="street" class="input-block-level" type="text" di-keyboard-helper-target di-capitalize-first 
+                   ng-model="newResidence.street" i18n-placeholder="_NewSubscriberResidence_InputStreetHolder_" />
+
+            <label for="houseNr" i18n="_NewSubscriberResidence_InputHouseNr_"></label>
+            <input id="houseNr" type="text" di-keyboard-helper-target ng-model="newResidence.houseNr" 
+                   i18n-placeholder="_NewSubscriberResidence_InputHouseNrHolder_" />
+
+            <label for="postcode" i18n="_NewSubscriberResidence_InputPostcode_"></label>
+            <input id="postcode" type="text" di-keyboard-helper-target ng-model="newResidence.postcode" 
+                   i18n-placeholder="_NewSubscriberResidence_InputPostcodeHolder_" />
+
+            <label for="city">
+                <span i18n="_NewSubscriberResidence_InputCity_"></span> *
+            </label>
+            <div class="error" ng-show="newSubscriberForm.$submitted && !newResidence.city" i18n="_Required_" />
+            <button type="button" id="city" ng-click="selectCity()" class="btn input-block-level" 
+                    ng-bind-with-default="newResidence.city.Name" pr-default-localized-key="_ClickToSelect_" ></button>
+
+            <label for="region" i18n="_NewSubscriberResidence_InputRegion_"></label>
+            <button type="button" id="region" ng-click="selectRegion()" class="btn input-block-level" 
+                    ng-bind-with-default="newResidence.region.Name" pr-default-localized-key="_ClickToSelect_" ></button>         
+
+            <label for="phone">
+                <span i18n="_NewSubscriberResidence_InputPhone_"></span> *
+            </label>
+            <div class="error" ng-show="newSubscriberForm.$submitted && !newResidence.phone" i18n="_Required_" />
+            <input id="phone" type="tel" di-keyboard-helper-target ng-model="newResidence.phone" i18n-placeholder="_NewSubscriberResidence_InputPhoneHolder_" />
+        </form>
+
+        <div di-keyboard-helper />
+    </div>
+
+    <footer class="text-center">
+        <div class="centerDiv">
+            <div class="touchArea touchAreaWidth">
+                <button class="buttonTransparent" ng-disabled="loading" type="button" ng-click="addNewSubscriber()">
+                    <img src="../../shared/img/actions/Approved_white_128x128.png" width="36" height="36" />
+                    <div i18n="_NewSubscriberResidence_CreateSubscriber_"></div>
+                </button>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -1,0 +1,110 @@
+﻿<div class="page">
+    <header di-header-banner pr-back="true" pr-header-first-line-localized="_CareRequestDetail_Title_" ></header>
+
+    <div class="content">
+
+        <div class="contentPaddingExceptBottom">
+            <span ng-show="!isLoading()" class="pull-right verticalImages">
+                <img src="../../shared/img/actions/info_outline_black_48x48.png"
+                     class="smallImageSize touchArea" 
+                     ng-click="navigateToSubscriberDetail()" />
+                <img ng-show="!canShowMaps() && allowAddNotesInResponder" 
+                     src="../../shared/img/actions/NewNote_black_128x128.png" 
+                     class="smallImageSize touchArea"
+                     ng-click="createNewNote(careRequest.SubscriberId)" />
+                <img ng-show="canShowMaps()" src="../../shared/img/actions/Navigate_black_128x128.png" 
+                     class="smallImageSize touchArea"
+                     ng-click="openNavigation(careRequest.Adress)" />
+            </span>
+            <span>
+                <care-request-list-item pr-navigation-from-list-item-enabled="true"
+                                        pr-care-request-item="careRequest"
+                                        pr-care-request-limited-reason="false"></care-request-list-item>
+            </span>            
+        </div>
+
+        <div ng-show="canShowMaps() && !mapErrorMessage" class="subcontent" ui-map="myMap" ui-options="mapOptions" />
+        <div ng-show="canShowMaps() && mapErrorMessage" class="subcontent" >
+            <div class="contentPadding centerDiv" i18n="{{mapErrorMessage}}"></div>
+        </div>
+
+        <div ng-show="canShowStatusTime()" class="subcontent contentPadding">
+            <table class="tableItemPadding">
+                <tr>
+                    <td>
+                        <img src="../../shared/img/caregivers-active_72x72.png" class="mediumImageSize" />
+                    </td>
+                    <td>
+                        <div i18n="_CareRequestDetail_TimeAccepted_"></div>
+                    </td>
+                    <td>
+                        <div ng-bind="(careRequest.TimeAccepted | MStoJSDateTime) || emptyDateFormat"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../shared/img/residences-green_72x72.png" class="mediumImageSize" />
+                    </td>
+                    <td>
+                        <div i18n="_CareRequestDetail_TimeArrived_"></div>
+                    </td>
+                    <td>
+                        <div ng-bind="(careRequest.TimeArrived | MStoJSDateTime) || emptyDateFormat"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../shared/img/subscriber-active_72x72.png" class="mediumImageSize" />
+                    </td>
+                    <td>
+                        <div i18n="_CareRequestDetail_TimeDone_"></div>
+                    </td>
+                    <td>
+                        <div ng-bind="(careRequest.TimeDone | MStoJSDateTime) || emptyDateFormat"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <footer class="text-center">
+        <div class="centerDiv spaceBetweenElements">
+            <button class="buttonTransparent touchArea" type="button" ng-disabled="isLoading()" ng-click="setCareRequestStatus(careRequestStatus.Accept)"
+                    ng-show="canAcceptWithoutSpeech()">
+                <img src="../../shared/img/actions/CareRequests_CanGo_white_128x128.png" class="smallImageSize" />
+                <div i18n="_CareRequestDetail_ICanGo_"></div>
+            </button>
+
+            <button class="buttonTransparent touchArea" type="button" ng-disabled="isLoading()" ng-click="setCareRequestToCall()"
+                    ng-show="canAcceptWithSpeech()" >
+                <img src="../../shared/img/actions/Contact_256x256.png" class="smallImageSize" />
+                <div i18n="_CareRequestDetail_AcceptCall_"></div>
+            </button>
+
+            <button class="buttonTransparent touchArea" type="button" ng-disabled="isLoading()" ng-click="setCareRequestStatus(careRequestStatus.Decline)"
+                    ng-show="careRequest.Status === careRequestStatus.Send || careRequest.Status === careRequestStatus.RequestReceived">
+                <img src="../../shared/img/actions/CareRequests_CannotGo_white_128x128.png" class="smallImageSize" />
+                <div i18n="_CareRequestDetail_ICannotGo_"></div>
+            </button>
+             
+            <button class="buttonTransparent touchArea" type="button" ng-disabled="isLoading()" ng-click="declineSpeechRequest()"
+                    ng-show="canClickDeclineCall()">
+                <img src="../../shared/img/actions/Contact_256x256.png" class="smallImageSize rotate-for-decline-call" />
+                <div i18n="_CareRequestDetail_DeclineCall_"></div>
+            </button>
+
+            <button class="buttonTransparent touchArea" type="button" ng-disabled="isLoading()" 
+                    ng-click="setCareRequestStatus(careRequestStatus.Arrived)"
+                    ng-show="careRequest.Status === careRequestStatus.Accept && allowActionArrived">
+                <img src="../../shared/img/actions/CareRequests_Arrived_white_128x128.png" class="smallImageSize" />
+                <div i18n="_CareRequestDetail_Arrived_"></div>
+            </button>
+
+            <button class="buttonTransparent touchArea" type="button" ng-disabled="isLoading()" 
+                    ng-click="setCareRequestStatus(careRequestStatus.Done)"
+                    ng-show="canClickDone()">
+                <img src="../../shared/img/actions/CareRequests_Done_white_128x128.png" class="smallImageSize" />
+                <div i18n="_CareRequestDetail_Done_"></div>
+            </button>
+        </div>
+    </footer>
+</div>

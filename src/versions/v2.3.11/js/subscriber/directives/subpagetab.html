@@ -1,0 +1,5 @@
+﻿<div class="subPageTab">
+    <span class="subPageItem touchArea subscriberMenuItemMargin" ng-click="navigate(page.url)" ng-repeat="page in pages">
+        <img class="imgCenter" ng-src="{{isPageActive(page.url) && page.active || page.image}}" width="30" height="30" />
+    </span>
+</div>

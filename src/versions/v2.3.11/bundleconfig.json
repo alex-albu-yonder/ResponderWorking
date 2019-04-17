@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "bower_components/vkz-webrequests/dist/vkz-webrequests.min.js",
+    "inputFiles": [
+      "bower_components/vkz-webrequests/dist/vkz-webrequests.js"
+    ]
+  }
+]

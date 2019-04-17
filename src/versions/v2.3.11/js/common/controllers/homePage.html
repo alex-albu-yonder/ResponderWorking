@@ -1,0 +1,43 @@
+﻿<div class="page">
+    <header di-header-banner pr-back="false" pr-home="false" pr-header-first-line-localized="{{pushIsEnabled ? '_CareRequestDetail_Title_' : '_HomePage_Title_'}}" ></header>
+    
+    <div class="contentWithoutSubs">
+        <div ng-switch="pushIsEnabled">
+            <div ng-switch-when="true">
+                <di-care-requests></di-care-requests>
+            </div>
+            <div ng-switch-when="false">
+                <di-todays-messages></di-todays-messages>
+            </div>
+        </div>
+    </div>
+    <footer class="subPageTab">
+        <span class="subPageItem touchArea" ng-if="settings.allowSearchSubscriberInResponder" ng-click="navigate('searchSubscribers')">
+            <button class="homeFooterButton imgCenter buttonTransparent" type="button">
+                <img class="smallImageSize" src="../../shared/img/subscriber-white_72x72.png" />
+                <div i18n="_HomePage_Search_"></div>
+            </button>
+        </span>
+        <span class="subPageItem touchArea" ng-if="settings.allowAddSubscriberInResponder" ng-click="navigate('newSubscriber/profile')">
+            <button class="homeFooterButton imgCenter buttonTransparent" type="button">
+                <img class="smallImageSize" src="../../shared/img/new-white_72x72.png"/>
+                <div i18n="_HomePage_New_"></div>
+            </button>
+        </span>
+        <span class="subPageItem touchArea" ng-click="navigate('messages')">
+            <button class="homeFooterButton imgCenter buttonTransparent" type="button" >
+                <div style="position: relative">
+                    <img class="smallImageSize" src="../../shared/img/messages-white_72x72.png"/>
+                    <div id="messageCountBadge" ng-show="newMessageCount > 0" class="badge badge-important" ng-bind="newMessageCount"></div>
+                </div>
+                <span i18n="_HomePage_Messages_" />
+            </button>
+        </span>
+        <span class="subPageItem touchArea" ng-click="navigate('settings')">
+            <button class="homeFooterButton imgCenter buttonTransparent" type="button">
+                <img class="smallImageSize" src="../../shared/img/actions/Settings_white_128x128.png"/>
+                <div i18n="_HomePage_Settings_"></div>
+            </button>
+        </span>
+    </footer>
+</div>

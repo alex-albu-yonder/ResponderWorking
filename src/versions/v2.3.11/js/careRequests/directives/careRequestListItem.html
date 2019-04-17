@@ -1,0 +1,30 @@
+﻿
+<h4 ng-class="{error: careRequestItem.Status <= 2}" ng-click="navigateToSubscriberDetail()">
+    <span ng-bind="careRequestItem.SubscriberName"></span> - <span i18n="{{careRequestItem.Status | careRequestStatusToText}}"></span>
+    <img ng-show="careRequestItem.IsWithSpeech && showSpeechIcon" 
+         class="pull-right x-smallImageSize smallContentPadding"  src="../../shared/img/actions/Contact_Black_256x256.png" />
+</h4>
+
+<table style="display: block" class="tableItemPadding">
+    <tr>
+        <td i18n="_HomePage_CareRequests_Alarm_"></td>
+        <td class="textGray" ng-bind="careRequestItem.AlarmFiredTime | MStoJSDateTime"></td>
+    </tr>
+    <tr>
+        <td i18n="_HomePage_CareRequests_Address_"></td>
+        <td class="textGray" ng-bind="careRequestItem.Adress"></td>
+    </tr>
+    <tr>
+        <td i18n="_HomePage_CareRequests_Phonenr_"></td>
+        <td ng-show="careRequestItem.SubscriberPhoneNumber">
+            <a ng-if="navigationFromListItemEnabled"
+               href="tel:{{careRequestItem.SubscriberPhoneNumber}}"
+               ng-bind="careRequestItem.SubscriberPhoneNumber"></a>
+
+            <span ng-if="!navigationFromListItemEnabled" ng-bind="careRequestItem.SubscriberPhoneNumber"></span>
+        </td>
+        <td ng-show="!careRequestItem.SubscriberPhoneNumber" i18n="_Unknown_" />
+    </tr>
+</table>
+
+<div class="smallContentPadding" ng-class="{ellipseContent : limitReason}">{{careRequestItem.Reason}}</div>

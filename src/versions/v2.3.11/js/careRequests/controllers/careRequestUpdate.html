@@ -1,0 +1,32 @@
+﻿<div class="page">
+    <header di-header-banner pr-back="true" pr-header-first-line-localized="_CareRequestUpdate_Title_" ></header>
+
+    <div class="content contentPadding">
+        
+        <div class="upperAndLowerPadding">
+            <span i18n="_CareRequestUpdate_NewStatus_"></span>: <span i18n="{{newStatus | careRequestStatusToText}}"></span>
+        </div>
+        
+        <textarea i18n-placeholder="_CareRequestUpdate_RemarkPlaceholder_" name="content" 
+                  class="inputFullWidth" rows="3" ng-model="statusUpdateRemark" maxlength="{{remarkCharacterCountLimit}}"></textarea>
+        
+        <div ng-show="remarkPercentageCharactersAvailable() < 20 && !remarkIsToLong()" class="warning">
+            Amount of characters left to finish the remark: {{remarkCharactersStillAvailable()}}
+        </div>
+
+        <div class="error" ng-show="remarkIsToLong()"
+             i18n="_CareRequestUpdate_RemarkToLong_"></div>
+
+    </div>
+    
+    <footer class="text-center">
+        <div class="centerDiv">
+            <div class="touchArea touchAreaWidth">
+                <button class="buttonTransparent" ng-disabled="loading" type="button" ng-click="sendStatusUpdate()">
+                    <img src="../../shared/img/actions/Approved_white_128x128.png" class="smallImageSize" />
+                    <div i18n="_CareRequestUpdate_SendUpdate_"></div>
+                </button>
+            </div>
+        </div>
+    </footer>   
+</div>
