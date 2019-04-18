@@ -4,7 +4,7 @@
         return function (cordovaDevice) {
             switch (cordovaDevice) {
                 case devicePlatformConstants.iOS:
-                    return domainEnums.operatingSystemType.iOS;
+                    return domainEnums.operatingSystemType.iOSFcm;
                 case devicePlatformConstants.Android:
                     return domainEnums.operatingSystemType.AndroidFcm;
                 case devicePlatformConstants.WP7:
