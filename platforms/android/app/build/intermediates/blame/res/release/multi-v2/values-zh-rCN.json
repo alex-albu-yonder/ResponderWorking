@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Projects\\Responder\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\lvdkevie\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\dcebf78b0abff79cef3c612308d48d16\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "364",
+                        "endColumns": "100",
+                        "endOffsets": "460"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\lvdkevie\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-messaging-11.6.2.aar\\3132ffaac956fb8ad5d8d3ffe2af7807\\res\\values-zh-rCN\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "96",
+                        "endOffsets": "343"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "263",
+                        "endColumns": "100",
+                        "endOffsets": "359"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\lvdkevie\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.6.2.aar\\2589e0e0d789dd53c498373a65267734\\res\\values-zh-rCN\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "289",
+                        "endColumns": "157",
+                        "endOffsets": "446"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "157",
+                        "endOffsets": "258"
+                    }
+                }
+            ]
+        }
+    ]
+}

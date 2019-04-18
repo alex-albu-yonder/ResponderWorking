@@ -1,0 +1,37 @@
+{
+  "name": "vkz-angular-cordova",
+  "authors": [
+    "Verklizan"
+  ],
+  "description": "Angular components to connect with the Cordova API",
+  "keywords": [
+    "angular",
+    "cordova"
+  ],
+  "license": "none",
+  "homepage": "www.verklizan.com",
+  "ignore": [
+    "**/.*",
+    "/*.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "docs",
+    "*.sln"
+  ],
+  "devDependencies": {
+    "angular": "1.5.8",
+    "jquery": "~3.1.0",
+    "jasmine-promise-matchers": "~2.0.2"
+  },
+  "_release": "dc1de81d",
+  "_resolution": {
+    "type": "commit",
+    "commit": "dc1de81d"
+  },
+  "_source": "http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-angular-cordova",
+  "_target": "dc1de81d",
+  "_originalSource": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-angular-cordova"
+}

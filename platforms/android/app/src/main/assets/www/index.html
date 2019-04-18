@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>umo app</title>
+
+    <script>
+        function navigateToCorrectVersion() {
+            //Script to determine which version off the code will be loaded
+            var version = localStorage.getItem("LastUsedAppVersion");
+            
+            if (version) {                
+                navigateToLastUsedOrDefaultVersion(version);
+            } else {
+                chooseDefaultVersion();
+            }
+        }
+
+        function navigateToLastUsedOrDefaultVersion(version) {
+            var versionPath = getVersionPathByVersion(version);
+
+            checkIfHtmlExists(versionPath, function() {
+                navigateToVersion(version);
+            }, function() {
+                chooseDefaultVersion();
+            });
+        }
+    
+        function chooseDefaultVersion() {
+            loadJson("versions/config.json", configLoaded, configError);
+        }
+
+        function checkIfHtmlExists(path, success, error) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        success();
+                    }
+                    else if(xhr.status === 0 && xhr.responseText) {
+                        success();
+                    }
+                    else {
+                        error();
+                    }
+                }
+            }
+
+            xhr.open("GET", path, true);
+            xhr.send();
+        }
+    
+        function loadJson(path, success, error) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === XMLHttpRequest.DONE) {
+                    if(xhr.status === 200 || xhr.status === 0) {
+                        success(JSON.parse(xhr.responseText));
+                    }
+                    else {
+                        error();
+                    }
+                }
+            }
+            
+            xhr.open("GET", path, true);
+            xhr.send();
+        }        
+    
+        function configLoaded(response) {
+            var lastIndex = response.supportedServices.length - 1;
+            navigateToVersion(response.supportedServices[lastIndex]);
+        }
+
+        function navigateToVersion(version) {
+            window.location.replace(getVersionPathByVersion(version));
+        }
+
+        function getVersionPathByVersion(version) {
+            return "versions/" + version + "/index.html";
+        }
+    
+        function configError() {
+            alert("config.json is not at the right place");
+        }
+    
+        navigateToCorrectVersion();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

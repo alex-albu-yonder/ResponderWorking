@@ -1,0 +1,38 @@
+{
+  "name": "vkz-utilities",
+  "authors": [
+    "Verklizan"
+  ],
+  "description": "Verklizan utilities library.",
+  "keywords": [
+    "angular",
+    "cordova"
+  ],
+  "license": "none",
+  "homepage": "www.verklizan.com",
+  "ignore": [
+    "**/.*",
+    "/*.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "docs",
+    "*.sln"
+  ],
+  "devDependencies": {
+    "angular": "1.5.8",
+    "jquery": "~3.1.0",
+    "jasmine-promise-matchers": "~2.0.2",
+    "moment": "^2.22.2"
+  },
+  "_release": "ec4be5aa4e",
+  "_resolution": {
+    "type": "commit",
+    "commit": "ec4be5aa4ef5c4a9755d3c32de9bfc90b380f6b3"
+  },
+  "_source": "http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-utilities",
+  "_target": "ec4be5aa4ef5c4a9755d3c32de9bfc90b380f6b3",
+  "_originalSource": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-utilities"
+}

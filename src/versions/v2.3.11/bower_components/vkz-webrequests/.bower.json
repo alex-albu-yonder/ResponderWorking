@@ -1,0 +1,38 @@
+{
+  "name": "vkz-webrequests",
+  "authors": [
+    "Verklizan"
+  ],
+  "description": "Verklizan webrequests library.",
+  "keywords": [
+    "angular",
+    "cordova"
+  ],
+  "license": "none",
+  "homepage": "www.verklizan.com",
+  "ignore": [
+    "**/.*",
+    "/*.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "docs",
+    "*.sln"
+  ],
+  "devDependencies": {
+    "angular": "1.5.8",
+    "jquery": "~3.1.0",
+    "jasmine-promise-matchers": "~2.0.2",
+    "vkz-utilities": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-utilities#70d9deff"
+  },
+  "_release": "e571f41779",
+  "_resolution": {
+    "type": "commit",
+    "commit": "e571f41779b4dff2770d6c4b59e854b81e0a2aa5"
+  },
+  "_source": "http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-webrequests",
+  "_target": "e571f41779b4dff2770d6c4b59e854b81e0a2aa5",
+  "_originalSource": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-webrequests"
+}
