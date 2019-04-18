@@ -27,12 +27,12 @@
     "jasmine-promise-matchers": "~2.0.2",
     "vkz-utilities": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-utilities#70d9deff"
   },
-  "_release": "e571f41779",
+  "_release": "4569e876df",
   "_resolution": {
     "type": "commit",
-    "commit": "e571f41779b4dff2770d6c4b59e854b81e0a2aa5"
+    "commit": "4569e876df0a39d25ba2cb3caeab72c83af0fefa"
   },
   "_source": "http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-webrequests",
-  "_target": "e571f41779b4dff2770d6c4b59e854b81e0a2aa5",
+  "_target": "4569e876df0a39d25ba2cb3caeab72c83af0fefa",
   "_originalSource": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-webrequests"
 }

@@ -1,9 +1,9 @@
 {
-  "version": "2.2.7.2",
+  "version": "3.0.0.1",
   "supportedServices": [
-    "v2.3.6"
+    "v2.3.11"
   ],
-  "targettedService": "v2.3.6",
+  "targettedService": "v2.3.11",
   "supportedLanguages": {
     "en-gb": {
       "language": "English (UK)"
