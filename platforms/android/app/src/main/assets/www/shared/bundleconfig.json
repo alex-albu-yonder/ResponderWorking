@@ -1,8 +1,0 @@
-[
-  {
-    "outputFileName": "bower_components/vkz-cordova/dist/vkz-angular-cordova.min.js",
-    "inputFiles": [
-      "bower_components/vkz-cordova/dist/vkz-angular-cordova.js"
-    ]
-  }
-]
