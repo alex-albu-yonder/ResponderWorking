@@ -263,7 +263,7 @@
   "_SubscriberPageProfile_Status_": "Status",
   "_SubscriberPageProfile_Address_": "Adress",
   "_SubscriberPageProfile_PostalCode_": "Postnr",
-  "_SubscriberPageProfile_KeyCode_": "Tangentkod",
+  "_SubscriberPageProfile_KeyCode_": "Nyckelkod",
   "_SubscriberPageProfile_PhoneNr_": "Telefonnr.",
   "_SubscriberPageCare_Title_": "Vårdare",
   "_SubscriberPageCare_NoData_": "Det gick inte att hitta några vårdare",
