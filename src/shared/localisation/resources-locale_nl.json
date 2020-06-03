@@ -264,6 +264,7 @@
   "_SubscriberPageProfile_Address_": "Adres",
   "_SubscriberPageProfile_PostalCode_": "Postcode",
   "_SubscriberPageProfile_KeyCode_": "Sleutelcode",
+  "_SubscriberPageProfile_KeyLocation_": "Sleutellocatie",
   "_SubscriberPageProfile_PhoneNr_": "Telefoonnr.",
   "_SubscriberPageCare_Title_": "Zorgverstrekkers",
   "_SubscriberPageCare_NoData_": "Geen zorgverstrekkers gevonden",

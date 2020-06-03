@@ -264,6 +264,7 @@
   "_SubscriberPageProfile_Address_": "Osoite",
   "_SubscriberPageProfile_PostalCode_": "Postinumero",
   "_SubscriberPageProfile_KeyCode_": "Avainkoodi",
+  "_SubscriberPageProfile_KeyLocation_": "Avaimen sijainti",
   "_SubscriberPageProfile_PhoneNr_": "puhelin ei",
   "_SubscriberPageCare_Title_": "omaishoitajat",
   "_SubscriberPageCare_NoData_": "Ei huoltajaa löydetty",

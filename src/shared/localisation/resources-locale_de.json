@@ -264,6 +264,7 @@
   "_SubscriberPageProfile_Address_": "Adresse",
   "_SubscriberPageProfile_PostalCode_": "PLZ",
   "_SubscriberPageProfile_KeyCode_": "Schlüsselcode",
+  "_SubscriberPageProfile_KeyLocation_": "Schlüsselstandort",
   "_SubscriberPageProfile_PhoneNr_": "Telefonnr.",
   "_SubscriberPageCare_Title_": "Einsatzkräfte",
   "_SubscriberPageCare_NoData_": "Keine Einsatzkräfte gefunden",

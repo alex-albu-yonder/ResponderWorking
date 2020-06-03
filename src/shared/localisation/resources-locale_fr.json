@@ -264,6 +264,7 @@
   "_SubscriberPageProfile_Address_": "Adresse",
   "_SubscriberPageProfile_PostalCode_": "Code postal",
   "_SubscriberPageProfile_KeyCode_": "Code de clé",
+  "_SubscriberPageProfile_KeyLocation_": "Emplacement de clé",
   "_SubscriberPageProfile_PhoneNr_": "Numéro de tél.",
   "_SubscriberPageCare_Title_": "Soignants",
   "_SubscriberPageCare_NoData_": "Aucun soignant trouvé",

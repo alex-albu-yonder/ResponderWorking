@@ -47,6 +47,10 @@
                     <td ng-bind-with-default="residenceInfo.DefaultEntrance.KeyCode" pr-default-localized-key="_Unknown_"/>
                 </tr>
                 <tr>
+                    <td class="item" i18n="_SubscriberPageProfile_KeyLocation_" />
+                    <td ng-bind-with-default="residenceInfo.DefaultEntrance.KeyLocation.Name" pr-default-localized-key="_Unknown_"/>
+                </tr>
+                <tr>
                     <td class="item" i18n="_SubscriberPageProfile_PhoneNr_" />
                     <td ng-show="residenceInfo.DefaultPhoneNumber"><a href="tel:{{residenceInfo.DefaultPhoneNumber}}" ng-bind="residenceInfo.DefaultPhoneNumber" /></td>
                     <td ng-show="!residenceInfo.DefaultPhoneNumber" i18n="_Unknown_" />

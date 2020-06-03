@@ -264,6 +264,7 @@
   "_SubscriberPageProfile_Address_": "Adresse",
   "_SubscriberPageProfile_PostalCode_": "Postnr",
   "_SubscriberPageProfile_KeyCode_": "Nøkkelkode",
+  "_SubscriberPageProfile_KeyLocation_": "Nøkkelplassering",
   "_SubscriberPageProfile_PhoneNr_": "Telefonnr.",
   "_SubscriberPageCare_Title_": "Pleier",
   "_SubscriberPageCare_NoData_": "Det gikk ikke å finne noen pleier",

@@ -255,6 +255,7 @@
     "_SubscriberPageProfile_Address_": "Dirección",
     "_SubscriberPageProfile_PostalCode_": "Código postal",
     "_SubscriberPageProfile_KeyCode_": "Código clave",
+    "_SubscriberPageProfile_KeyLocation_": "Ubicación clave",
     "_SubscriberPageProfile_PhoneNr_": "Núm. de teléfono",
     "_SubscriberPageCare_Title_": "Cuidadores",
     "_SubscriberPageCare_NoData_": "No se han encontrado cuidadores",

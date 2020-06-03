@@ -264,6 +264,7 @@
   "_SubscriberPageProfile_Address_": "Address",
   "_SubscriberPageProfile_PostalCode_": "Postal code",
   "_SubscriberPageProfile_KeyCode_": "Key code",
+  "_SubscriberPageProfile_KeyLocation_": "Key Location",
   "_SubscriberPageProfile_PhoneNr_": "Phone nr.",
   "_SubscriberPageCare_Title_": "Caregivers",
   "_SubscriberPageCare_NoData_": "No caregivers found",
