@@ -662,6 +662,10 @@ footer {
     white-space: nowrap;
 }
 
+.multiLineContent {
+    white-space: pre-line;
+}
+
 .onlyShowFirstElement > :first-child {
     display: block;
     overflow: hidden;
