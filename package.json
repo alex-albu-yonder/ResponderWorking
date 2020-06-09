@@ -13,9 +13,9 @@
   "dependencies": {
     "autoprefixer": "^6.6.1",
     "bower": "^1.8.0",
-    "cordova": "^8.0.0",
-    "cordova-android": "^7.1.4",
-    "cordova-ios": "^4.5.5",
+    "cordova": "^9.0.0",
+    "cordova-android": "^8.1.0",
+    "cordova-ios": "^6.0.0",
     "cssnano": "^3.9.1",
     "grunt": "^1.0.3",
     "grunt-angular-templates": "~1.1.0",
