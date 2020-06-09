@@ -16,6 +16,7 @@
     "cordova": "^9.0.0",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^6.0.0",
+    "cordova-plugin-wkwebview-engine": "^1.2.1",
     "cssnano": "^3.9.1",
     "grunt": "^1.0.3",
     "grunt-angular-templates": "~1.1.0",

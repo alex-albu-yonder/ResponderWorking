@@ -36,6 +36,11 @@
         <resource-file src="GoogleService-Info.plist" />
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="ShowSplashScreenSpinner" value="false" />
+        <preference name="WKWebViewOnly" value="true" />
+        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+        <feature name="CDVWKWebViewEngine">
+            <param name="ios-package" value="CDVWKWebViewEngine" />
+        </feature>
         <icon height="167" src="config/icons/ResponderApp_Icon-167.png" width="167" />
         <icon height="180" src="config/icons/ResponderApp_Icon-60@3x.png" width="180" />
         <icon height="120" src="config/icons/ResponderApp_Icon-60@2x.png" width="120" />
