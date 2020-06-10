@@ -63,7 +63,8 @@
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
       "cordova-plugin-camera": {},
       "cordova-support-google-services": {},
-      "phonegap-plugin-push": {}
+      "phonegap-plugin-push": {},
+      "cordova-plugin-wkwebview-engine": {}
     }
   },
   "devDependencies": {
