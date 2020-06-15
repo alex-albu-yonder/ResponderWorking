@@ -4,7 +4,7 @@
 
     <div class="contentWithoutSubs contentPadding">
         <fieldset>
-            <legend class="textGreen" i18n="_Settings_Language_"></legend>
+            <legend class="textDefault" i18n="_Settings_Language_"></legend>
             <div di-set-language></div>
         </fieldset>
 
@@ -12,7 +12,7 @@
         the select boxes did not work when FastClick was enabled-->
 
         <fieldset ng-show="currentUserRole === roles.caregiver && (newSubscriberStatusIsEditable || newDeviceStatusIsEditable || deviceUnlinkStatusIsEditable)">
-            <legend class="textGreen" i18n="_Settings_Status_"></legend>
+            <legend class="textDefault" i18n="_Settings_Status_"></legend>
             <div>
                 <div ng-show="newSubscriberStatusIsEditable">
                     <label i18n="_Settings_StatusDescription_"></label>
@@ -53,7 +53,7 @@
         </fieldset>
 
         <fieldset ng-show="currentUserRole === roles.caregiver">
-            <legend class="textGreen" i18n="_Settings_PushNotifications_"></legend>
+            <legend class="textDefault" i18n="_Settings_PushNotifications_"></legend>
 
             <p class="error" ng-show="pushEnableError" i18n="_Settings_PushTelIsRequired_"></p>
 
@@ -77,7 +77,7 @@
         </fieldset>
 
         <fieldset ng-show="currentUserRole === roles.operator && platformIsValidForFacetime()">
-            <legend class="textGreen" i18n="_Settings_FaceTimeRequest_"></legend>
+            <legend class="textDefault" i18n="_Settings_FaceTimeRequest_"></legend>
             <p i18n="_Settings_FaceTimeDescription_"></p>
             <p class="error" ng-show="faceTimeError" i18n="_Required_"></p>
 
@@ -94,7 +94,7 @@
         </fieldset>
 
         <fieldset>
-            <legend class="textGreen" i18n="_Settings_UserManagement_"></legend>
+            <legend class="textDefault" i18n="_Settings_UserManagement_"></legend>
 
             <div ng-show="currentUserRole === roles.caregiver" class="contentPaddingExceptBottom">
                 <button class="btn roundedBtn-large" i18n="_Settings_ChangePassword_" ng-click=" navigateToChangePassword()"></button>

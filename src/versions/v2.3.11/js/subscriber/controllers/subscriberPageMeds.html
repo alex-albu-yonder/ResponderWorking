@@ -7,7 +7,7 @@
 
         <div class="subcontent contentPadding">
             <fieldset>
-                <legend class="textGreen" i18n="_SubscriberPageMeds_Medical_" />
+                <legend class="textDefault" i18n="_SubscriberPageMeds_Medical_" />
                 
                 <div ng-show="medicalInfo.Rows.length == 0">
                     <p class="textGray" i18n="_SubscriberPageMeds_MedicalNoData_" />
@@ -20,7 +20,7 @@
             </fieldset>
 
             <fieldset>
-                <legend class="textGreen" i18n="_SubscriberPageMeds_Medication_" />
+                <legend class="textDefault" i18n="_SubscriberPageMeds_Medication_" />
 
                 <div ng-show="medicationInfo.Rows.length == 0">
                     <p class="textGray" i18n="_SubscriberPageMeds_MedicationNoData_" />
@@ -33,7 +33,7 @@
             </fieldset>
 
             <fieldset ng-show="teleMedicine.length > 0">
-                <legend class="textGreen" >Tele Medicine</legend>
+                <legend class="textDefault" >Tele Medicine</legend>
 
                 <div ng-repeat="row in teleMedicine">
                     <h5>Medical data {{$index + 1}}</h5>

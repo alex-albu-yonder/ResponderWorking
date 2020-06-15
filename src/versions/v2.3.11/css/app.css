@@ -6,7 +6,7 @@
 body, html {
     margin: 0;
     height: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*JvR: Suppressing the overall default -webkit-tap-highlight-color*/
+    -webkit-tap-highlight-color: #000000; /*JvR: Suppressing the overall default -webkit-tap-highlight-color*/
 }
 
     body #content {
@@ -24,8 +24,8 @@ a {
 }
 
     a:active {
-        color: rgb(80, 80, 80) !important;
-        background-color: rgb(73, 194, 233);
+        color: #666666 !important;
+        background-color: #2265c0;
         text-decoration: none !important;
     }
 
@@ -59,12 +59,12 @@ h5 {
 }
 
 nav {
-    background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(238, 238, 238);
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
 }
 
 table.table tr td {
-    color: rgb(80, 80, 80) !important;
+    color: #505050 !important;
 }
 
 td.item {
@@ -88,11 +88,11 @@ td.item {
 }
 
 .error { /*JvR: maybe change to text-error from bootstrap.css*/
-    color: red;
+    color: #d1262d;
 }
 
 .warning {
-    color: orange;
+    color: #d17526;
 }
 
 .inputFullWidth {
@@ -105,7 +105,7 @@ td.item {
 
 .notesTouchArea:active {
     height: 24px;
-    color: rgb(80, 80, 80) !important;
+    color: #505050 !important;
 }
 
 .roundedBtn-medium {
@@ -134,15 +134,15 @@ td.item {
 }
 
 .textBlue {
-    color: rgb(73, 194, 233);
+    color: #2265c0;
 }
 
 .textGray {
-    color: rgb(80, 80, 80);
+    color: #505050;
 }
 
-.textGreen {
-    color: rgb(5, 104, 90);
+.textDefault {
+    color: #0a0a0a;
 }
 
 .textShadow {
@@ -158,11 +158,11 @@ td.item {
 }
 
 .touchArea {
-    color: rgb(73, 194, 233) !important; /*JvR: hack for subscriber profile notes count*/
+    color: #2265c0 !important; /*JvR: hack for subscriber profile notes count*/
 }
 
     .touchArea:active {
-        background-color: rgb(73, 194, 233);
+        background-color: #2265c0;
     }
 
 .touchAreaHeader {
@@ -300,7 +300,7 @@ td.item {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-color: rgb(250, 250, 250);
+    background-color: #fafafa;
 }
 
 .content {
@@ -368,15 +368,10 @@ td.item {
 *********************/
 
 header {
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #49C2E9), color-stop(1, #05685A)); /* Webkit (Safari/Chrome 10) */
-    background-image: -webkit-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* Webkit (Chrome 11+) */
-    background-image: -ms-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* IE10 Consumer Preview */
-    background-image: -moz-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* Mozilla Firefox */
-    background-image: -o-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* Opera */
-    background-image: linear-gradient(to right, #49C2E9 0%, #05685A 100%); /* W3C Markup, IE10 Release Preview */
-    -moz-box-shadow: inset 0px -8px 25px rgba(0, 0,0, 0.3);
-    -webkit-box-shadow: inset 0px -8px 25px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0px -8px 25px rgba(0, 0, 0, 0.3);
+    background-color: #1a3e70;
+    -moz-box-shadow: inset 0px -8px 25px #0000004d;
+    -webkit-box-shadow: inset 0px -8px 25px #0000004d;
+    box-shadow: inset 0px -8px 25px #0000004d;
 }
 
 .headerContainer {
@@ -433,7 +428,7 @@ header {
 }
 
 .headerBanner {
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -446,31 +441,26 @@ header {
 *********************/
 
 footer {
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #49C2E9), color-stop(1, #05685A)); /* Webkit (Safari/Chrome 10) */
-    background-image: -webkit-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* Webkit (Chrome 11+) */
-    background-image: -ms-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* IE10 Consumer Preview */
-    background-image: -moz-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* Mozilla Firefox */
-    background-image: -o-linear-gradient(left, #49C2E9 0%, #05685A 100%); /* Opera */
-    background-image: linear-gradient(to right, #49C2E9 0%, #05685A 100%); /* W3C Markup, IE10 Release Preview */
+    background-color: #1a3e70;
     width: 100%;
     -webkit-box-ordinal-group: 3; /* OLD - iOS 6-, Safari 3.1-6 */
     -moz-box-ordinal-group: 3; /* OLD - Firefox 19- */
     -ms-flex-order: 3; /* IE 10 */
     -webkit-order: 3; /* NEW - Chrome */
     order: 3; /* NEW, Spec - Opera 12.1, Firefox 20+ */
-    -moz-box-shadow: inset 0px 8px 25px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: inset 0px 8px 25px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0px 8px 25px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0px 8px 25px #0000004d;
+    -webkit-box-shadow: inset 0px 8px 25px #0000004d;
+    box-shadow: inset 0px 8px 25px #0000004d;
 }
 
     footer div {
         margin: 0 auto;
-        color: rgb(255, 255, 255);
+        color: #ffffff;
     }
 
     footer span {
         margin: 0 auto;
-        color: rgb(255, 255, 255);
+        color: #ffffff;
     }
 
 
@@ -484,13 +474,13 @@ footer {
     background: url("../../../shared/img/backgrounds/Gradient_Full_HD.jpg") no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-    color: white;
+    color: #ffffff;
 }
 
     .accountPage img.responderLogo {
         width: 30%;
         height: auto;
-        -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
+        -webkit-filter: drop-shadow(12px 12px 25px #00000080);
         filter: url(#drop-shadow);
         -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
         filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
@@ -506,9 +496,9 @@ footer {
 
     .accountPage .logoBanner {
         background-color: rgb(255, 255, 255);
-        -moz-box-shadow: 0px 3px 35px rgba(0, 0, 0, 0.5);
-        -webkit-box-shadow: 0px 3px 35px rgba(0, 0, 0, 0.5);
-        box-shadow: 0px 3px 35px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 3px 35px #00000080;
+        -webkit-box-shadow: 0px 3px 35px #00000080;
+        box-shadow: 0px 3px 35px #00000080;
     }
 
     .accountPage .logoContainer img {
@@ -529,7 +519,7 @@ footer {
 
         .accountPage .centeredControls label {
             font-size: 17.5px;
-            color: rgb(255, 255, 255);
+            color: #ffffff;
         }
 
         .accountPage .centeredControls input {
@@ -537,9 +527,9 @@ footer {
             -moz-border-radius: 14px;
             -webkit-border-radius: 14px;
             border-radius: 14px;
-            -moz-box-shadow: inset 0px 1px 2px rgb(153, 153, 153);
-            -webkit-box-shadow: inset 0px 1px 2px rgb(153, 153, 153);
-            box-shadow: inset 0px 1px 2px rgb(153, 153, 153);
+            -moz-box-shadow: inset 0px 1px 2px #999999;
+            -webkit-box-shadow: inset 0px 1px 2px #999999;
+            box-shadow: inset 0px 1px 2px #999999;
             outline: 0;
             border: none;
             /* removes iOS shadows */
@@ -549,8 +539,8 @@ footer {
     .accountPage.loginPage .centeredControls button {
         background-color: transparent;
         background-image: none;
-        color: white;
-        border: 1px solid white;
+        color: #ffffff;
+        border: 1px solid #ffffff;
         padding: 2px;
     }
 
@@ -575,8 +565,8 @@ footer {
 
 .passwordPage {
     background: none;
-    background-color: white;
-    color: black;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 /********************
@@ -592,7 +582,7 @@ footer {
 
     .loading .loadingMessage {
         font-size: 18px;
-        color: white;
+        color: #ffffff;
         margin: 100px 100px;
         text-align: center;
         display: -webkit-box;
@@ -681,7 +671,7 @@ footer {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background: red;
+    background: #d1262d;
     width: 8px;
     height: 8px;
     display: inline-block;
@@ -705,12 +695,12 @@ footer {
 }
 
 .newSubscriberResidence .createSubscriberBanner {
-    background-color: gray;
+    background-color: #808080;
     height: 50px;
 }
 
 .searchSubscribers, .searchSubscriberResult {
-    background-color: rgb(250, 250, 250);
+    background-color: #fafafa;
     display: -moz-box;
     display: box;
     display: -ms-flexbox;
@@ -750,17 +740,16 @@ footer {
 }
 
     .list > div {
-        background-color: white;
+        background-color: #ffffff;
         min-height: 70px;
         padding: 1px 10px 5px;
-        -webkit-box-shadow: 0px 3px 3px 0px rgba(80, 80, 80, 0.05);
-        -moz-box-shadow: 0px 3px 3px 0px rgba(80, 80, 80, 0.05);
-        box-shadow: 0px 3px 3px 0px rgba(80, 80, 80, 0.05);
+        -webkit-box-shadow: 0px 3px 3px 0px #5050500d;
+        -moz-box-shadow: 0px 3px 3px 0px #5050500d;
+        box-shadow: 0px 3px 3px 0px #5050500d;
     }
 
         .list > div:active {
-            background-color: rgba(73, 194, 233, 0.4);
-            /*background-color: rgb(245, 245, 245);*/
+            background-color: #49c2e966;
         }
 
         .list > div img {
@@ -823,7 +812,7 @@ footer {
     }
 
 .grayOutDisabled > span:not([disabled="disabled"]) {
-    background-color: lightgray;
+    background-color: #d3d3d3;
 }
 
 .rotate-for-decline-call {
@@ -843,10 +832,10 @@ div.spinner {
     height: 35px;
     margin-left: -24px;
     z-index: 100;
-    border-bottom: 6px solid rgba(5, 104, 90, 0.9);
-    border-left: 6px solid rgba(73, 194, 233, 1);
-    border-right: 6px solid rgba(73, 194, 233, 1);
-    border-top: 6px solid rgba(73, 194, 233, 1);
+    border-bottom: 6px solid #2265C0e6;
+    border-left: 6px solid #22b4c0;
+    border-right: 6px solid #22b4c0;
+    border-top: 6px solid #22b4c0;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
@@ -875,10 +864,10 @@ div.spinner {
         margin: 5px 20px;
         width: 10px;
         height: 10px;
-        border-bottom: 6px solid rgba(5, 104, 90, 0.9);
-        border-left: 6px solid rgba(73, 194, 233, 1);
-        border-right: 6px solid rgba(73, 194, 233, 1);
-        border-top: 6px solid rgba(73, 194, 233, 1);
+        border-bottom: 6px solid #2265C0e6;
+        border-left: 6px solid #22b4c0;
+        border-right: 6px solid #22b4c0;
+        border-top: 6px solid #22b4c0;
         -moz-border-radius: 100%;
         -webkit-border-radius: 100%;
         border-radius: 100%;
