@@ -31,7 +31,7 @@
     "type": "commit",
     "commit": "dc1de81d"
   },
-  "_source": "http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-angular-cordova",
+  "_source": "https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-angular-cordova",
   "_target": "dc1de81d",
-  "_originalSource": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-angular-cordova"
+  "_originalSource": "git+https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-angular-cordova"
 }

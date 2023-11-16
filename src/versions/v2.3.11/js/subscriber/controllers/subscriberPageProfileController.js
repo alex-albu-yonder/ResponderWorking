@@ -1,5 +1,5 @@
 ﻿angular.module('verklizan.umox.mobile.subscriber').controller('subscriberPageProfileController',
-    function ($q, $scope, $routeParams, navigationService, subscriberDataManager, recentViewsDataManager, RecentSubscriber, promiseLoadingSpinnerService) {
+    function ($q, $scope, $routeParams, navigationService, organizationSettingsService, subscriberDataManager, recentViewsDataManager, RecentSubscriber, promiseLoadingSpinnerService) {
         'use strict';
 
         //#region Private Fields
@@ -17,6 +17,9 @@
         $scope.profileInfo = null;
         $scope.residenceInfo = null;
         $scope.notesInfo = null;
+        $scope.showSubscriptionNumberOfSubscriberInResponder = organizationSettingsService.getShowSubscriptionNumberOfSubscriberInResponder();
+        $scope.showAuthenticationIdOfSubscriberInResponder = organizationSettingsService.getShowAuthenticationIdOfSubscriberInResponder();
+        $scope.showCitizenServiceNumberOfSubscriberInResponder = organizationSettingsService.getShowCitizenServiceNumberOfSubscriberInResponder();
         //#endregion
 
         //#region Public Methods

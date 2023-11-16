@@ -18,12 +18,16 @@
             "AllowSearchSubscriberInResponder": new OrganizationSetting("ResponderUsabilitySettings.AllowSearchSubscriberInResponder", true),
             "CareRequestHistoryLengthDaysInResponder": new OrganizationSetting("ResponderUsabilitySettings.CareRequestHistoryLengthDaysInResponder", 7),
             "AllowAddNotesInResponder": new OrganizationSetting("ResponderUsabilitySettings.AllowAddNotesInResponder", true),
+            "ShowSubscriptionNumberOfSubscriberInResponder": new OrganizationSetting("ResponderUsabilitySettings.ShowSubscriptionNumberOfSubscriberInResponder"),
+            "ShowAuthenticationIdOfSubscriberInResponder": new OrganizationSetting("ResponderUsabilitySettings.ShowAuthenticationIdOfSubscriberInResponder"),
+            "ShowCitizenServiceNumberOfSubscriberInResponder": new OrganizationSetting("ResponderUsabilitySettings.ShowCitizenServiceNumberOfSubscriberInResponder"),
             "OrganizationLogo": new OrganizationSetting("ResponderAppearance.LogoBase64"),
             "OrganizationLogoMimetype": new OrganizationSetting("ResponderAppearance.LogoMimeType"),
             "ShowBannerBehindLogo": new OrganizationSetting("ResponderAppearance.BannerVisible", true),
             "AllowActionArrived": new OrganizationSetting("CareRequestBusinessSettings.AllowResponderToSetArrived"),
             "AllowActionDone": new OrganizationSetting("CareRequestBusinessSettings.AllowResponderToSetDone"),
-            "AllowActionDoneIfNotYetArrived": new OrganizationSetting("CareRequestBusinessSettings.ResponderActionDoneSetsArrived")
+            "AllowActionDoneIfNotYetArrived": new OrganizationSetting("CareRequestBusinessSettings.ResponderActionDoneSetsArrived"),
+            "SendResponderPositionOnArrivedAndDone": new OrganizationSetting("CareRequestBusinessSettings.LetResponderSendPositionOnArrivedAndDone"),
         };
 
         // ============================

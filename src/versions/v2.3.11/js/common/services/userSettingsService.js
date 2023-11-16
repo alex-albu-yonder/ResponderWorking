@@ -9,6 +9,7 @@
             "UnlinkDeviceStatus",
             "LastSeenOrganizationNoteIndex",
             "RecentSubscriberViews",
+            "PomasAuthenticationCredentials",
             "PushTelNumber",
             "PushIsEnabled",
             "FaceTimeId",

@@ -1,4 +1,4 @@
-﻿angular.module('verklizan.umox.mobile').run(
+﻿angular.module('enovation.umox.mobile').run(
     function ($q, $rootScope, $timeout, splashScreenService, nativeNotificationService, localizedNotificationService, organizationSettingsService, settingsService,
         navigationService, pushNotificationSettingsService, GenericHttpErrorHandler, httpErrorCode, securityTokenService, localisationService, applicationLifeCycleService,
         userDataManager, urlSettingsService, languageSettingsService) {

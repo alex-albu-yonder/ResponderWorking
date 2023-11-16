@@ -1,7 +1,7 @@
 ﻿angular.module('verklizan.umox.mobile.careRequests').controller('careRequestDetailController',
-    function ($scope, $routeParams, domainModel, careRequestDataManager, uiMapHelperService, navigationService,
+    function ($document, $scope, $q, $routeParams, domainModel, careRequestDataManager, uiMapHelperService, navigationService,
         launchNavigatorService, localizedNotificationService, deviceService, devicePlatformConstants, promiseLoadingSpinnerService,
-        careRequestTypes, organizationSettingsService) {
+        careRequestTypes, mapConstants, organizationSettingsService, pomasServiceProxy, settingsService, userSettingsService) {
         'use strict';
 
         // ============================
@@ -12,7 +12,9 @@
         $scope.mapErrorMessage = null;
         $scope.emptyDateFormat = "**.**.**";
         $scope.careRequestStatus = domainModel.careRequestStatus;
-        $scope.navigationDestination = "";
+        $scope.subscriberAddressCoordinates = null;
+        $scope.alarmPositionObject = null;
+        $scope.destinationCoordinatesOnMap = null;
         $scope.isLoading = promiseLoadingSpinnerService.getIsLoading;
         $scope.careRequestTypes = careRequestTypes;
         $scope.allowAddNotesInResponder = organizationSettingsService.getAllowAddNotesInResponder();
@@ -78,10 +80,8 @@
             navigationService.navigate("/subscriberPage/" + $scope.careRequest.SubscriberId + "/profile");
         }
 
-        $scope.openNavigation = function (adress) {
-            if (adress) {
-                launchNavigatorService.navigate(adress).catch(openNavigateError);
-            }
+        $scope.openNavigation = function (coordinates) {
+            launchNavigatorService.navigate([coordinates.latitude, coordinates.longitude]).catch(openNavigateError);
         }
 
         $scope.createNewNote = function (subscriberId) {
@@ -149,15 +149,77 @@
         // ============================
         var loadPage = function () {
             loadCareRequest($scope.careRequestId).then(function (careRequest) {
-                if ($scope.canShowMaps()) {
-                    uiMapHelperService.initializeMap($scope.myMap, careRequest.Adress).catch(initializeMapError);
-                }
+                var loadAlarmPosition = getPositionOfAlarm(careRequest).then(function (positionObject) {
+                    $scope.alarmPositionObject = positionObject;
+                });
+                var loadSubscriberAddressCoordinates = uiMapHelperService.getCoordinatesOfAddress(careRequest.Adress).then(function (googleMapsCoordinates) {
+                    $scope.subscriberAddressCoordinates = { latitude: googleMapsCoordinates.lat(), longitude: googleMapsCoordinates.lng() };
+                });
 
+                if ($scope.canShowMaps()) {
+                    $q.allSettled([loadAlarmPosition, loadSubscriberAddressCoordinates]).then(function () {
+                        if ($scope.alarmPositionObject !== null) {
+                            displayRouteOnMap(
+                                parseFloat($scope.alarmPositionObject.latitude), 
+                                parseFloat($scope.alarmPositionObject.longitude), 
+                                mapConstants.markerTypes.subscriber);
+                        }
+                        else {
+                            displayRouteOnMap(
+                                $scope.subscriberAddressCoordinates.latitude, 
+                                $scope.subscriberAddressCoordinates.longitude, 
+                                mapConstants.markerTypes.subscriberHome);
+                        }
+                    });
+                }
                 checkIfStatusUpdateRequestReceivedIsNeeded($scope.careRequestId);
                 setOrganizationSettings();
             });
+        }
 
-            setNavigationDestination();
+        var displayRouteOnMap = function (destinationLatitude, destinationLongitude, destinationMarker) {
+            $scope.destinationCoordinatesOnMap = { latitude: destinationLatitude, longitude: destinationLongitude };
+            var googleMapsCoordinates = new google.maps.LatLng({ lat: destinationLatitude, lng: destinationLongitude });
+            return uiMapHelperService
+                .initializeMap($scope.myMap, googleMapsCoordinates, mapConstants.markerTypes.responder, destinationMarker)
+                .then(addNavigationButtonToMap)
+                .catch(initializeMapError);
+        }
+
+        var addNavigationButtonToMap = function() {
+            var controlDiv = document.createElement("div");
+
+            var controlUI = document.createElement("div");
+            controlUI.classList.add("navigationButtonInMap");
+            controlDiv.appendChild(controlUI);
+
+            var controlImage = document.createElement("div");
+            controlUI.appendChild(controlImage);
+            
+            controlUI.addEventListener("click", function () {
+                $scope.openNavigation($scope.destinationCoordinatesOnMap);
+            });
+
+            $scope.myMap.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+        }
+
+        var getPositionOfAlarm = function (careRequest) {
+            var deferred = $q.defer();
+            var pomasServiceExists = settingsService.getPomasServiceExists();
+            if (careRequest.IncidentId && pomasServiceExists) {
+                pomasServiceProxy
+                    .getPositionByIncidentId(userSettingsService.getPomasAuthenticationCredentials(), careRequest.IncidentId)
+                    .then(function (success) {
+                        deferred.resolve(success.data);
+                    })
+                    .catch(function (error) {
+                        deferred.reject();
+                    });
+            }
+            else {
+                deferred.reject();
+            }
+            return deferred.promise;
         }
 
         var setOrganizationSettings = function () {
@@ -208,17 +270,6 @@
             promiseLoadingSpinnerService.addLoadingPromise(updateCareRequestPromise);
         }
 
-        var setNavigationDestination = function () {
-            var platform = deviceService.platform;
-
-            if (platform === devicePlatformConstants.Android) {
-                $scope.navigationDestination = "Google Maps";
-            }
-            else if (platform === devicePlatformConstants.iOS) {
-                $scope.navigationDestination = "Apple Maps";
-            }
-        }
-
         var initializeMapError = function (error) {
             $scope.mapErrorMessage = error.localizedErrorMessage;
         }
@@ -226,6 +277,6 @@
         var openNavigateError = function () {
             localizedNotificationService.alert("_Alerts_NavigateError_", "_Alerts_NavigateError_Title_", "_Ok_");
         }
-
+        
     }
 );

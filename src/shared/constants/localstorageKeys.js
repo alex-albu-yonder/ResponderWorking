@@ -9,6 +9,8 @@
     subscriberNotePage: "SubscriberNotePage",
     residenceInfo: "ResidenceInfo",
     hasOpenedMaps: "HasOpenedMapsBefore",
+    pomasAuthenticationCredentials: "pomasAuthenticationCredentials",
+    pomasServiceExists: "pomasServiceExists",
     pushIsEnabled: "PushIsEnabled",
     pushTelNumber: "PushTelNumber",
     lastOrganizationNoteSortIndex: "lastOrganizationNoteSortIndex",

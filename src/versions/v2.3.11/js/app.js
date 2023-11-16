@@ -2,7 +2,7 @@
 // Module definitions
 // ============================
 // Declare app level module which depends on filters and services
-angular.module('verklizan.umox.mobile', [
+angular.module('enovation.umox.mobile', [
     'verklizan.umox.mobile.common',
     'verklizan.umox.mobile.account',
     'verklizan.umox.mobile.userInfo',

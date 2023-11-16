@@ -26,6 +26,6 @@
         "angular": "1.5.8",
         "jquery": "~3.1.0",
         "jasmine-promise-matchers": "~2.0.2",
-        "vkz-utilities": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-utilities#70d9deff"
+        "vkz-utilities": "git+https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-utilities#3c54385c311e6ca22d4ebe80a5ca4351005875e2"
     }
 }

@@ -2137,6 +2137,33 @@ angular.module('verklizan.umox.common.html5.vkz-utilities.settings').provider('l
         }]
     });
 
+angular.module('verklizan.umox.common.html5.vkz-utilities.settings').provider('pomasUrlSettingsService',
+    function () {
+
+        this.$get = ['settingsService', 'settingsDomain', function (settingsService, settingsDomain) {
+            var pomasUrlSettingsService = {};
+
+            pomasUrlSettingsService.getBaseUrlObject = function () {
+                var pomasBaseUrlObject = settingsService.getPomasBaseUrl();
+
+                if (pomasBaseUrlObject === null || typeof pomasBaseUrlObject === "undefined") {
+                    pomasBaseUrlObject = new settingsDomain.URL();
+                }
+
+                return pomasBaseUrlObject;
+            };
+
+            pomasUrlSettingsService.setBaseUrlObject = function (host, port) {
+                var newBaseUrl = new settingsDomain.URL(host, port, "pomas");
+
+                settingsService.setPomasBaseUrl(newBaseUrl);
+            };
+
+            return pomasUrlSettingsService;
+        }];
+    }
+);
+
 /**
  * @ngdoc service
  * @name CordovaUTIL.settings.settingsDomain
@@ -2230,6 +2257,7 @@ angular.module('verklizan.umox.common.html5.vkz-utilities.settings').provider('s
     function () {
         var includedSettings = [
             { name: "BaseUrl", options: { needsParsing: true } },
+            { name: "PomasBaseUrl", options: { needsParsing: true } },
             { name: "Language" },
             { name: "InstanceGUID" },
             { name: "ApplicationName" },

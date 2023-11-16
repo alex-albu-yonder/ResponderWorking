@@ -1698,6 +1698,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			DoorLeftOpenAlarm : 16777578,
 			BackupDeviceCommunicationLostNoVoiceAlarm : 16777580,
 			BackupDeviceCommunicationRestoreNoVoiceAlarm : 16777581,
+			WelfareAcknowledgeAlarm : 16777586,
 			ParkinsonAlarm : 16777592,
 			OutsideGeoFenceAreaAlarm : 16777596,
 			InsideGeoFenceAreaAlarm : 16777597,
@@ -1835,6 +1836,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			AdministrationAlarm : 16777916,
 			SubAlarm : 16777917,
 			LoneWorkerJobAlarm : 16777918,
+			ManualDeviceVerifyAlarm : 16777919,
 			PortStatusAlarm : 16778016,
 			ProgrammingSuccesfullAlarm : 16778017,
 			NoSystemAcknowledgeReceivedAlarm : 16778018,
@@ -1970,16 +1972,22 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			CancelDialRequest : 33554463,
 			CloseConferenceRequest : 33554464,
 			CloseIncidentToFollowUpRequest : 33554465,
-			GeneralDeviceControl : 50331648,
+			ResetDeviceTimeoutRequest : 33554466,
+			OperatorListenSpeechModeRequest : 33554467,
+			OperatorSpeakSpeechModeRequest : 33554468,
+			OperatorFullDuplexSpeechModeRequest : 33554469,
+			OperatorVolumeUpRequest : 33554470,
+			OperatorVolumeDownRequest : 33554471,
+			DeviceControl : 50331648,
 			OpenDoorControl : 50331649,
 			TraceControl : 50331650,
 			TrackingControl : 50331651,
-			ForcedConnectControl : 50331652,
+			ForceConnectControl : 50331652,
 			CarBlockControl : 50331653,
 			ServiceModeControl : 50331654,
 			DeviceProgrammingControl : 50331655,
 			DeviceReadoutControl : 50331656,
-			ForcedCheckControl : 50331657,
+			ForceCheckControl : 50331657,
 			CareTimeoutWarning : 67108864,
 			CareRefusedWarning : 67108865,
 			BusyContactChannelWarning : 67108866,
@@ -2002,6 +2010,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			CaregiverSignedOutStatus : 150994947,
 			OperatorRegistration : 167772160,
 			OperatorUnregistration : 167772161,
+			OperatorSkillsSelection : 167772162,
 			DeviceConnected : 184549376,
 			DeviceDisconnected : 184549377,
 });
@@ -2102,6 +2111,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			Alive : 8,
 			OperatorActionsUnavailable : 9,
 			OperatorActionsAvailable : 10,
+			PositionInfoNotification : 11,
 });
 		
 /* istanbul ignore next */
@@ -2131,6 +2141,10 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			OperatorsInSystemInfo : 20,
 			OperatorsWizardInSystemInfo : 21,
 			RelationalCaregiverWizardInClientInfoConfigurationWithoutNotesTab : 22,
+			TemplateDevicesInClientInfo : 23,
+			TemplateDeviceWizardInClientInfoConfiguration : 24,
+			CaregiverGroupsInClientInfo : 25,
+			CaregiverGroupWizardInClientInfoConfiguration : 26,
 });
 		
 /* istanbul ignore next */
@@ -2211,6 +2225,8 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			SelectModule : 71,
 			SelectScheme : 72,
 			SelectDeviceControl : 73,
+			SelectDoctorReference : 74,
+			SelectInsuranceClass : 75,
 });
 		
 /* istanbul ignore next */
@@ -2243,6 +2259,8 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			ReportPanel : 12,
 			UserPanel : 13,
 			OperatorPanel : 14,
+			TemplateDevicePanel : 15,
+			CaregiverGroupPanel : 16,
 });
 		
 /* istanbul ignore next */
@@ -2288,6 +2306,10 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			SubscriberWebLinksTab : 36,
 			HolidayTab : 37,
 			DeviceControlTab : 38,
+			TemplateDeviceTab : 39,
+			AlarmCallTab : 40,
+			CaregiverGroupTab : 41,
+			GroupMembersTab : 42,
 });
 		
 /* istanbul ignore next */
@@ -2302,7 +2324,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 });
 		
 /* istanbul ignore next */
-// This javaScript Angular 'enum' factory is auto-generated from the original enum Verklizan.UmoX.Common.Services.Contracts.Resultable.ResultCodes.
+// This javaScript Angular 'enum' factory is auto-generated from the original enum Verklizan.UmoX.Common.Services.Contracts.ResultCodes.
 // When modification is required, please change and build original enum first then 'Run Custom Tool' on ResultCodes.tt in Utilities.CodeGeneration. 
 angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').constant('resultCodes', {
 			None : 0,
@@ -2392,362 +2414,384 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.domain.enums').const
 			AvailableReport_Update : 32,
 			AvailableReport_Delete : 33,
 			Caregiver_Read : 34,
-			CaregiverLink_Create : 35,
-			CaregiverLink_Read : 36,
-			CaregiverLink_Update : 37,
-			CaregiverLink_Delete : 38,
-			CaregiverType_Create : 39,
-			CaregiverType_Read : 40,
-			CaregiverType_Update : 41,
-			CaregiverType_Delete : 42,
-			CareRequest_Read : 43,
-			CareRequest_Update : 44,
-			CareRequest_Subscription : 45,
-			City_Create : 46,
-			City_Read : 47,
-			City_Update : 48,
-			City_Delete : 49,
-			ClientDocument_Create : 50,
-			ClientDocument_Read : 51,
-			ClientDocument_Update : 52,
-			ClientDocument_Delete : 53,
-			CoInhabitantType_Create : 54,
-			CoInhabitantType_Read : 55,
-			CoInhabitantType_Update : 56,
-			CoInhabitantType_Delete : 57,
-			Company_Create : 58,
-			Company_Read : 59,
-			Company_Update : 60,
-			Company_Delete : 61,
-			ConsumerGroup_Create : 62,
-			ConsumerGroup_Read : 63,
-			ConsumerGroup_Update : 64,
-			ConsumerGroup_Delete : 65,
-			ConsumerState_Create : 66,
-			ConsumerState_Read : 67,
-			ConsumerState_Update : 68,
-			ConsumerState_Delete : 69,
-			ContactItemType_Create : 70,
-			ContactItemType_Read : 71,
-			ContactItemType_Update : 72,
-			ContactItemType_Delete : 73,
-			Contract_Create : 74,
-			Contract_Read : 75,
-			Contract_Update : 76,
-			Contract_Delete : 77,
-			ContractDocument_Create : 78,
-			ContractDocument_Read : 79,
-			ContractDocument_Update : 80,
-			ContractDocument_Delete : 81,
-			ContractHash_Create : 82,
-			ContractHash_Read : 83,
-			ContractHash_Update : 84,
-			ContractHash_Delete : 85,
-			Country_Create : 86,
-			Country_Read : 87,
-			Country_Update : 88,
-			Country_Delete : 89,
-			CurrentUser_Read : 90,
-			Debtor_Create : 91,
-			Debtor_Read : 92,
-			Debtor_Update : 93,
-			Debtor_Delete : 94,
-			Device_Create : 95,
-			Device_Read : 96,
-			Device_Update : 97,
-			Device_Delete : 98,
-			DeviceControl_Create : 99,
-			DeviceControl_Read : 100,
-			DeviceControl_Update : 101,
-			DeviceControl_Delete : 102,
-			DeviceManagementSetting_Read : 103,
-			DeviceManager_Create : 104,
-			DeviceManager_Read : 105,
-			DeviceManager_Update : 106,
-			DeviceManager_Delete : 107,
-			DeviceType_Create : 108,
-			DeviceType_Read : 109,
-			DeviceType_Update : 110,
-			DeviceType_Delete : 111,
-			DeviceState_Create : 112,
-			DeviceState_Read : 113,
-			DeviceState_Update : 114,
-			DeviceState_Delete : 115,
-			DebugService_ApplicationList_Read : 116,
-			DebugService_CreateTraceLog : 117,
-			DebugService_CreateTraceLogSL : 118,
-			DebugService_ExtendSubscription : 119,
-			DebugService_ReadTraceLogPage : 120,
-			DebugService_ReadLoginTrailPage : 121,
-			DebugService_Subscribe : 122,
-			DebugService_TraceLevel_Update : 123,
-			DebugService_UnSubscribe : 124,
-			District_Create : 125,
-			District_Read : 126,
-			District_Update : 127,
-			District_Delete : 128,
-			DoctorReference_Create : 129,
-			DoctorReference_Read : 130,
-			DoctorReference_Update : 131,
-			DoctorReference_Delete : 132,
-			EmailService_SendMail : 133,
-			EmailService_SendMailWithAttachment : 134,
-			EmailService_SendMailTemplated : 135,
-			Event_Create : 136,
-			Event_Read : 137,
-			Event_Update : 138,
-			Event_Delete : 139,
-			EventAspect_Create : 140,
-			EventAspect_Read : 141,
-			EventAspect_Update : 142,
-			EventAspect_Delete : 143,
-			EventAspectCategory_Create : 144,
-			EventAspectCategory_Read : 145,
-			EventAspectCategory_Update : 146,
-			EventAspectCategory_Delete : 147,
-			EventAspectValue_Create : 148,
-			EventAspectValue_Read : 149,
-			EventAspectValue_Update : 150,
-			EventAspectValue_Delete : 151,
-			EventPriority_Create : 152,
-			EventPriority_Read : 153,
-			EventPriority_Update : 154,
-			EventPriority_Delete : 155,
-			EventProcedure_Create : 156,
-			EventProcedure_Read : 157,
-			EventProcedure_Update : 158,
-			EventProcedure_Delete : 159,
-			EventType_Create : 160,
-			EventType_Read : 161,
-			EventType_Update : 162,
-			EventType_Delete : 163,
-			ExternalWebLinkType_Read : 164,
-			GeneralDocument_Create : 165,
-			GeneralDocument_Read : 166,
-			GeneralDocument_Update : 167,
-			GeneralDocument_Delete : 168,
-			GeneralSetting_Read : 169,
-			GeneralSetting_Update : 170,
-			IncidentAndConference_Handling : 171,
-			Incident_Create : 172,
-			Incident_Read : 173,
-			Incident_Update : 174,
-			Incident_Delete : 175,
-			IncidentKind_Create : 176,
-			IncidentKind_Read : 177,
-			IncidentKind_Update : 178,
-			IncidentKind_Delete : 179,
-			IncidentPriority_Create : 180,
-			IncidentPriority_Read : 181,
-			IncidentPriority_Update : 182,
-			IncidentPriority_Delete : 183,
-			Insurer_Create : 184,
-			Insurer_Read : 185,
-			Insurer_Update : 186,
-			Insurer_Delete : 187,
-			InsuranceClass_Create : 188,
-			InsuranceClass_Read : 189,
-			InsuranceClass_Update : 190,
-			InsuranceClass_Delete : 191,
-			InvoiceMethod_Create : 192,
-			InvoiceMethod_Read : 193,
-			InvoiceMethod_Update : 194,
-			InvoiceMethod_Delete : 195,
-			KeyLocation_Create : 196,
-			KeyLocation_Read : 197,
-			KeyLocation_Update : 198,
-			KeyLocation_Delete : 199,
-			Language_Create : 200,
-			Language_Read : 201,
-			Language_Update : 202,
-			Language_Delete : 203,
-			License_Read : 204,
-			Manage_WcfService : 205,
-			Manage_ServiceInfo_Read : 206,
-			Manage_ServiceInfo_Update : 207,
-			MaritalState_Create : 208,
-			MaritalState_Read : 209,
-			MaritalState_Update : 210,
-			MaritalState_Delete : 211,
-			MedicalCondition_Create : 212,
-			MedicalCondition_Read : 213,
-			MedicalCondition_Update : 214,
-			MedicalCondition_Delete : 215,
-			MedicalConditionValue_Create : 216,
-			MedicalConditionValue_Read : 217,
-			MedicalConditionValue_Update : 218,
-			MedicalConditionValue_Delete : 219,
-			MedicalInfo_Create : 220,
-			MedicalInfo_Read : 221,
-			MedicalInfo_Update : 222,
-			MedicalInfo_Delete : 223,
-			MedicalPriority_Create : 224,
-			MedicalPriority_Read : 225,
-			MedicalPriority_Update : 226,
-			MedicalPriority_Delete : 227,
-			Medication_Create : 228,
-			Medication_Read : 229,
-			Medication_Update : 230,
-			Medication_Delete : 231,
-			Medicine_Create : 232,
-			Medicine_Read : 233,
-			Medicine_Update : 234,
-			Medicine_Delete : 235,
-			Module_Read : 236,
-			NonPeriodicalCost_Create : 237,
-			NonPeriodicalCost_Read : 238,
-			NonPeriodicalCost_Update : 239,
-			NonPeriodicalCost_Delete : 240,
-			Operator_Create : 241,
-			Operator_Read : 242,
-			Operator_Update : 243,
-			Operator_Delete : 244,
-			Organization_Create : 245,
-			Organization_Read : 246,
-			Organization_Update : 247,
-			Organization_Delete : 248,
-			PaymentMethod_Create : 249,
-			PaymentMethod_Read : 250,
-			PaymentMethod_Update : 251,
-			PaymentMethod_Delete : 252,
-			PeriodicalCost_Create : 253,
-			PeriodicalCost_Read : 254,
-			PeriodicalCost_Update : 255,
-			PeriodicalCost_Delete : 256,
-			Person_Create : 257,
-			Person_Read : 258,
-			Person_Update : 259,
-			Person_Delete : 260,
-			Personalization_Create : 261,
-			Personalization_Read : 262,
-			Personalization_Update : 263,
-			Personalization_Delete : 264,
-			PointOfEntry_Create : 265,
-			PointOfEntry_Read : 266,
-			PointOfEntry_Update : 267,
-			PointOfEntry_Delete : 268,
-			ProfessionalCaregiver_Create : 269,
-			ProfessionalCaregiver_Read : 270,
-			ProfessionalCaregiver_Update : 271,
-			ProfessionalCaregiver_Delete : 272,
-			Project_Create : 273,
-			Project_Read : 274,
-			Project_Update : 275,
-			Project_Delete : 276,
-			PushNotificationSetting_Read : 277,
-			ReferralStatus_Create : 278,
-			ReferralStatus_Read : 279,
-			ReferralStatus_Update : 280,
-			ReferralStatus_Delete : 281,
-			Region_Create : 282,
-			Region_Read : 283,
-			Region_Update : 284,
-			Region_Delete : 285,
-			RelationalCaregiver_Create : 286,
-			RelationalCaregiver_Read : 287,
-			RelationalCaregiver_Update : 288,
-			RelationalCaregiver_Delete : 289,
-			RelationType_Create : 290,
-			RelationType_Read : 291,
-			RelationType_Update : 292,
-			RelationType_Delete : 293,
-			Report_Create : 294,
-			Report_Read : 295,
-			Report_Update : 296,
-			Report_Delete : 297,
-			Residence_Create : 298,
-			Residence_Read : 299,
-			Residence_Update : 300,
-			Residence_Delete : 301,
-			ResidenceType_Create : 302,
-			ResidenceType_Read : 303,
-			ResidenceType_Update : 304,
-			ResidenceType_Delete : 305,
-			ResponderSetting_Read : 306,
-			ResponderSetting_Update : 307,
-			Resultable_ProcessResult : 308,
-			Role_Create : 309,
-			Role_Read : 310,
-			Role_Update : 311,
-			Role_Delete : 312,
-			Salutation_Create : 313,
-			Salutation_Read : 314,
-			Salutation_Update : 315,
-			Salutation_Delete : 316,
-			ScheduledTaskType_Create : 317,
-			ScheduledTaskType_Read : 318,
-			ScheduledTaskType_Update : 319,
-			ScheduledTaskType_Delete : 320,
-			ScheduledTask_Create : 321,
-			ScheduledTask_Read : 322,
-			ScheduledTask_Update : 323,
-			ScheduledTask_Delete : 324,
-			ScheduledTask_Execute : 325,
-			Scheme_Create : 326,
-			Scheme_Read : 327,
-			Scheme_Update : 328,
-			Scheme_Delete : 329,
-			ServiceInfo_Handling : 330,
-			ServiceVersion_Read : 331,
-			Setting_Read : 332,
-			Setting_Update : 333,
-			Skill_Create : 334,
-			Skill_Read : 335,
-			Skill_Update : 336,
-			Skill_Delete : 337,
-			SkillEventType_Create : 338,
-			SkillEventType_Read : 339,
-			SkillEventType_Update : 340,
-			SkillEventType_Delete : 341,
-			Subscriber_Create : 342,
-			Subscriber_Read : 343,
-			Subscriber_Update : 344,
-			Subscriber_Delete : 345,
-			SubscriberExternalWebLink_Create : 346,
-			SubscriberExternalWebLink_Read : 347,
-			SubscriberExternalWebLink_Update : 348,
-			SubscriberExternalWebLink_Delete : 349,
-			SubscriberHoliday_Create : 350,
-			SubscriberHoliday_Read : 351,
-			SubscriberHoliday_Update : 352,
-			SubscriberHoliday_Delete : 353,
-			SubscriberHistory_Read : 354,
-			SubscriberState_Create : 355,
-			SubscriberState_Read : 356,
-			SubscriberState_Update : 357,
-			SubscriberState_Delete : 358,
-			SupportingDataManagementSetting_Read : 359,
-			Tariff_Create : 360,
-			Tariff_Read : 361,
-			Tariff_Update : 362,
-			Tariff_Delete : 363,
-			Task_Create : 364,
-			Task_Read : 365,
-			Task_Update : 366,
-			Task_Delete : 367,
-			TerminationReason_Create : 368,
-			TerminationReason_Read : 369,
-			TerminationReason_Update : 370,
-			TerminationReason_Delete : 371,
-			Title_Create : 372,
-			Title_Read : 373,
-			Title_Update : 374,
-			Title_Delete : 375,
-			UmoWebSetting_Read : 376,
-			UmoWebSetting_Update : 377,
-			User_Create : 378,
-			User_Read : 379,
-			User_Update : 380,
-			User_Delete : 381,
-			User_Reset : 382,
-			VatTariff_Create : 383,
-			VatTariff_Read : 384,
-			VatTariff_Update : 385,
-			VatTariff_Delete : 386,
-			Warden_Create : 387,
-			Warden_Read : 388,
-			Warden_Update : 389,
-			Warden_Delete : 390,
+			CaregiverGroup_Create : 35,
+			CaregiverGroup_Read : 36,
+			CaregiverGroup_Update : 37,
+			CaregiverGroup_Delete : 38,
+			CaregiverLink_Create : 39,
+			CaregiverLink_Read : 40,
+			CaregiverLink_Update : 41,
+			CaregiverLink_Delete : 42,
+			CaregiverType_Create : 43,
+			CaregiverType_Read : 44,
+			CaregiverType_Update : 45,
+			CaregiverType_Delete : 46,
+			CareRequest_Read : 47,
+			CareRequest_Update : 48,
+			CareRequest_Subscription : 49,
+			City_Create : 50,
+			City_Read : 51,
+			City_Update : 52,
+			City_Delete : 53,
+			ClientDocument_Create : 54,
+			ClientDocument_Read : 55,
+			ClientDocument_Update : 56,
+			ClientDocument_Delete : 57,
+			CoInhabitantType_Create : 58,
+			CoInhabitantType_Read : 59,
+			CoInhabitantType_Update : 60,
+			CoInhabitantType_Delete : 61,
+			Company_Create : 62,
+			Company_Read : 63,
+			Company_Update : 64,
+			Company_Delete : 65,
+			ConsumerGroup_Create : 66,
+			ConsumerGroup_Read : 67,
+			ConsumerGroup_Update : 68,
+			ConsumerGroup_Delete : 69,
+			ConsumerState_Create : 70,
+			ConsumerState_Read : 71,
+			ConsumerState_Update : 72,
+			ConsumerState_Delete : 73,
+			ContactItemType_Create : 74,
+			ContactItemType_Read : 75,
+			ContactItemType_Update : 76,
+			ContactItemType_Delete : 77,
+			Contract_Create : 78,
+			Contract_Read : 79,
+			Contract_Update : 80,
+			Contract_Delete : 81,
+			ContractDocument_Create : 82,
+			ContractDocument_Read : 83,
+			ContractDocument_Update : 84,
+			ContractDocument_Delete : 85,
+			ContractHash_Create : 86,
+			ContractHash_Read : 87,
+			ContractHash_Update : 88,
+			ContractHash_Delete : 89,
+			Country_Create : 90,
+			Country_Read : 91,
+			Country_Update : 92,
+			Country_Delete : 93,
+			CurrentUser_Read : 94,
+			DataApi_Subscriber_Read : 95,
+			DataApi_Device_Read : 96,
+			DataApi_Incident_Read : 97,
+			DataApi_Caregiver_Read : 98,
+			Debtor_Create : 99,
+			Debtor_Read : 100,
+			Debtor_Update : 101,
+			Debtor_Delete : 102,
+			Device_Create : 103,
+			Device_Read : 104,
+			Device_Update : 105,
+			Device_Delete : 106,
+			Device_Read_CompanyZero : 107,
+			DeviceControl_Create : 108,
+			DeviceControl_Read : 109,
+			DeviceControl_Update : 110,
+			DeviceControl_Delete : 111,
+			DeviceManagementSetting_Read : 112,
+			DeviceManager_Create : 113,
+			DeviceManager_Read : 114,
+			DeviceManager_Update : 115,
+			DeviceManager_Delete : 116,
+			DeviceType_Create : 117,
+			DeviceType_Read : 118,
+			DeviceType_Update : 119,
+			DeviceType_Delete : 120,
+			DeviceState_Create : 121,
+			DeviceState_Read : 122,
+			DeviceState_Update : 123,
+			DeviceState_Delete : 124,
+			DebugService_ApplicationList_Read : 125,
+			DebugService_CreateTraceLog : 126,
+			DebugService_CreateTraceLogSL : 127,
+			DebugService_ExtendSubscription : 128,
+			DebugService_ReadTraceLogPage : 129,
+			DebugService_ReadLoginTrailPage : 130,
+			DebugService_Subscribe : 131,
+			DebugService_TraceLevel_Update : 132,
+			DebugService_UnSubscribe : 133,
+			District_Create : 134,
+			District_Read : 135,
+			District_Update : 136,
+			District_Delete : 137,
+			DoctorReference_Create : 138,
+			DoctorReference_Read : 139,
+			DoctorReference_Update : 140,
+			DoctorReference_Delete : 141,
+			EmailService_SendMail : 142,
+			EmailService_SendMailWithAttachment : 143,
+			EmailService_SendMailTemplated : 144,
+			Event_Create : 145,
+			Event_Read : 146,
+			Event_Update : 147,
+			Event_Delete : 148,
+			EventAspect_Create : 149,
+			EventAspect_Read : 150,
+			EventAspect_Update : 151,
+			EventAspect_Delete : 152,
+			EventAspectCategory_Create : 153,
+			EventAspectCategory_Read : 154,
+			EventAspectCategory_Update : 155,
+			EventAspectCategory_Delete : 156,
+			EventAspectValue_Create : 157,
+			EventAspectValue_Read : 158,
+			EventAspectValue_Update : 159,
+			EventAspectValue_Delete : 160,
+			EventPriority_Create : 161,
+			EventPriority_Read : 162,
+			EventPriority_Update : 163,
+			EventPriority_Delete : 164,
+			EventProcedure_Create : 165,
+			EventProcedure_Read : 166,
+			EventProcedure_Update : 167,
+			EventProcedure_Delete : 168,
+			EventType_Create : 169,
+			EventType_Read : 170,
+			EventType_Update : 171,
+			EventType_Delete : 172,
+			EventType_AlarmCalls_Read : 173,
+			EventType_SystemCalls_Read : 174,
+			EventType_CallCentreCalls_Read : 175,
+			EventType_CrmIncidents_Read : 176,
+			ExternalWebLinkType_Read : 177,
+			GeneralDocument_Create : 178,
+			GeneralDocument_Read : 179,
+			GeneralDocument_Update : 180,
+			GeneralDocument_Delete : 181,
+			GeneralSetting_Read : 182,
+			GeneralSetting_Update : 183,
+			IncidentAndConference_Handling : 184,
+			Incident_Create : 185,
+			Incident_Read : 186,
+			Incident_Update : 187,
+			Incident_Delete : 188,
+			IncidentKind_Create : 189,
+			IncidentKind_Read : 190,
+			IncidentKind_Update : 191,
+			IncidentKind_Delete : 192,
+			IncidentPriority_Create : 193,
+			IncidentPriority_Read : 194,
+			IncidentPriority_Update : 195,
+			IncidentPriority_Delete : 196,
+			Insurer_Create : 197,
+			Insurer_Read : 198,
+			Insurer_Update : 199,
+			Insurer_Delete : 200,
+			InsuranceClass_Create : 201,
+			InsuranceClass_Read : 202,
+			InsuranceClass_Update : 203,
+			InsuranceClass_Delete : 204,
+			InvoiceMethod_Create : 205,
+			InvoiceMethod_Read : 206,
+			InvoiceMethod_Update : 207,
+			InvoiceMethod_Delete : 208,
+			KeyLocation_Create : 209,
+			KeyLocation_Read : 210,
+			KeyLocation_Update : 211,
+			KeyLocation_Delete : 212,
+			Language_Create : 213,
+			Language_Read : 214,
+			Language_Update : 215,
+			Language_Delete : 216,
+			License_Read : 217,
+			Manage_WcfService : 218,
+			Manage_ServiceInfo_Read : 219,
+			Manage_ServiceInfo_Update : 220,
+			MaritalState_Create : 221,
+			MaritalState_Read : 222,
+			MaritalState_Update : 223,
+			MaritalState_Delete : 224,
+			MedicalCondition_Create : 225,
+			MedicalCondition_Read : 226,
+			MedicalCondition_Update : 227,
+			MedicalCondition_Delete : 228,
+			MedicalConditionValue_Create : 229,
+			MedicalConditionValue_Read : 230,
+			MedicalConditionValue_Update : 231,
+			MedicalConditionValue_Delete : 232,
+			MedicalInfo_Create : 233,
+			MedicalInfo_Read : 234,
+			MedicalInfo_Update : 235,
+			MedicalInfo_Delete : 236,
+			MedicalPriority_Create : 237,
+			MedicalPriority_Read : 238,
+			MedicalPriority_Update : 239,
+			MedicalPriority_Delete : 240,
+			Medication_Create : 241,
+			Medication_Read : 242,
+			Medication_Update : 243,
+			Medication_Delete : 244,
+			Medicine_Create : 245,
+			Medicine_Read : 246,
+			Medicine_Update : 247,
+			Medicine_Delete : 248,
+			Module_Read : 249,
+			NonPeriodicalCost_Create : 250,
+			NonPeriodicalCost_Read : 251,
+			NonPeriodicalCost_Update : 252,
+			NonPeriodicalCost_Delete : 253,
+			Operator_Create : 254,
+			Operator_Read : 255,
+			Operator_Update : 256,
+			Operator_Delete : 257,
+			Organization_Create : 258,
+			Organization_Read : 259,
+			Organization_Update : 260,
+			Organization_Delete : 261,
+			PaymentMethod_Create : 262,
+			PaymentMethod_Read : 263,
+			PaymentMethod_Update : 264,
+			PaymentMethod_Delete : 265,
+			PeriodicalCost_Create : 266,
+			PeriodicalCost_Read : 267,
+			PeriodicalCost_Update : 268,
+			PeriodicalCost_Delete : 269,
+			Person_Create : 270,
+			Person_Read : 271,
+			Person_Update : 272,
+			Person_Delete : 273,
+			Personalization_Create : 274,
+			Personalization_Read : 275,
+			Personalization_Update : 276,
+			Personalization_Delete : 277,
+			PointOfEntry_Create : 278,
+			PointOfEntry_Read : 279,
+			PointOfEntry_Update : 280,
+			PointOfEntry_Delete : 281,
+			Pomas_Position_Read : 282,
+			Pomas_Position_Write : 283,
+			Pomas_Position_Delete : 284,
+			ProfessionalCaregiver_Create : 285,
+			ProfessionalCaregiver_Read : 286,
+			ProfessionalCaregiver_Update : 287,
+			ProfessionalCaregiver_Delete : 288,
+			Project_Create : 289,
+			Project_Read : 290,
+			Project_Update : 291,
+			Project_Delete : 292,
+			PushNotificationSetting_Read : 293,
+			ReferralStatus_Create : 294,
+			ReferralStatus_Read : 295,
+			ReferralStatus_Update : 296,
+			ReferralStatus_Delete : 297,
+			Region_Create : 298,
+			Region_Read : 299,
+			Region_Update : 300,
+			Region_Delete : 301,
+			RelationalCaregiver_Create : 302,
+			RelationalCaregiver_Read : 303,
+			RelationalCaregiver_Update : 304,
+			RelationalCaregiver_Delete : 305,
+			RelationType_Create : 306,
+			RelationType_Read : 307,
+			RelationType_Update : 308,
+			RelationType_Delete : 309,
+			Report_Create : 310,
+			Report_Read : 311,
+			Report_Update : 312,
+			Report_Delete : 313,
+			Residence_Create : 314,
+			Residence_Read : 315,
+			Residence_Update : 316,
+			Residence_Delete : 317,
+			ResidenceType_Create : 318,
+			ResidenceType_Read : 319,
+			ResidenceType_Update : 320,
+			ResidenceType_Delete : 321,
+			ResponderSetting_Read : 322,
+			ResponderSetting_Update : 323,
+			Resultable_ProcessResult : 324,
+			Role_Create : 325,
+			Role_Read : 326,
+			Role_Update : 327,
+			Role_Delete : 328,
+			Salutation_Create : 329,
+			Salutation_Read : 330,
+			Salutation_Update : 331,
+			Salutation_Delete : 332,
+			ScheduledTaskType_Create : 333,
+			ScheduledTaskType_Read : 334,
+			ScheduledTaskType_Update : 335,
+			ScheduledTaskType_Delete : 336,
+			ScheduledTask_Create : 337,
+			ScheduledTask_Read : 338,
+			ScheduledTask_Update : 339,
+			ScheduledTask_Delete : 340,
+			ScheduledTask_Execute : 341,
+			Scheme_Create : 342,
+			Scheme_Read : 343,
+			Scheme_Update : 344,
+			Scheme_Delete : 345,
+			ServiceInfo_Handling : 346,
+			ServiceVersion_Read : 347,
+			Setting_Read : 348,
+			Setting_Update : 349,
+			Skill_Create : 350,
+			Skill_Read : 351,
+			Skill_Update : 352,
+			Skill_Delete : 353,
+			SkillEventType_Create : 354,
+			SkillEventType_Read : 355,
+			SkillEventType_Update : 356,
+			SkillEventType_Delete : 357,
+			SmsService_SendSms : 358,
+			Subscriber_Create : 359,
+			Subscriber_Read : 360,
+			Subscriber_Update : 361,
+			Subscriber_Update_SubscriberState : 362,
+			Subscriber_Delete : 363,
+			SubscriberExternalWebLink_Create : 364,
+			SubscriberExternalWebLink_Read : 365,
+			SubscriberExternalWebLink_Update : 366,
+			SubscriberExternalWebLink_Delete : 367,
+			SubscriberHoliday_Create : 368,
+			SubscriberHoliday_Read : 369,
+			SubscriberHoliday_Update : 370,
+			SubscriberHoliday_Delete : 371,
+			SubscriberHistory_Read : 372,
+			SubscriberState_Create : 373,
+			SubscriberState_Read : 374,
+			SubscriberState_Update : 375,
+			SubscriberState_Delete : 376,
+			SubscriberStateChangeReason_Create : 377,
+			SubscriberStateChangeReason_Read : 378,
+			SubscriberStateChangeReason_Update : 379,
+			SubscriberStateChangeReason_Delete : 380,
+			SupportingDataManagementSetting_Read : 381,
+			Tariff_Create : 382,
+			Tariff_Read : 383,
+			Tariff_Update : 384,
+			Tariff_Delete : 385,
+			Task_Create : 386,
+			Task_Read : 387,
+			Task_Update : 388,
+			Task_Delete : 389,
+			TerminationReason_Create : 390,
+			TerminationReason_Read : 391,
+			TerminationReason_Update : 392,
+			TerminationReason_Delete : 393,
+			Title_Create : 394,
+			Title_Read : 395,
+			Title_Update : 396,
+			Title_Delete : 397,
+			UmoWebSetting_Read : 398,
+			UmoWebSetting_Update : 399,
+			User_Create : 400,
+			User_Read : 401,
+			User_Update : 402,
+			User_Delete : 403,
+			User_Reset : 404,
+			VatTariff_Create : 405,
+			VatTariff_Read : 406,
+			VatTariff_Update : 407,
+			VatTariff_Delete : 408,
+			Warden_Create : 409,
+			Warden_Read : 410,
+			Warden_Update : 411,
+			Warden_Delete : 412,
 });
 		
 /* istanbul ignore next */
@@ -2899,15 +2943,20 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
 
     caregiver_read: 'Caregiver_Read',
 
-    caregiverLink_create: 'CaregiverLink_Create',
-    caregiverLink_read: 'CaregiverLink_Read',
-    caregiverLink_update: 'CaregiverLink_Update',
-    caregiverLink_delete: 'CaregiverLink_Delete',
+    caregiverGroup_create: 'CaregiverGroup_Create',
+    caregiverGroup_read: 'CaregiverGroup_Read',
+    caregiverGroup_update: 'CaregiverGroup_Update',
+    caregiverGroup_delete: 'CaregiverGroup_Delete',
 
     caregiverType_create: 'CaregiverType_Create',
     caregiverType_read: 'CaregiverType_Read',
     caregiverType_update: 'CaregiverType_Update',
     caregiverType_delete: 'CaregiverType_Delete',
+
+    caregiverLink_create: 'CaregiverLink_Create',
+    caregiverLink_read: 'CaregiverLink_Read',
+    caregiverLink_update: 'CaregiverLink_Update',
+    caregiverLink_delete: 'CaregiverLink_Delete',
 
     careRequest_read: 'CareRequest_Read',
     careRequest_update: 'CareRequest_Update',
@@ -2970,6 +3019,11 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
 
     currentUser_read: 'CurrentUser_Read',
 
+    dataApi_subscriber_read: 'DataApi_Subscriber_Read',
+    dataApi_incident_read: 'DataApi_Incident_Read',
+    dataApi_caregiver_read: 'DataApi_Caregiver_Read',
+    dataApi_device_read: 'DataApi_Device_Read',
+
     debtor_create: 'Debtor_Create',
     debtor_read: 'Debtor_Read',
     debtor_update: 'Debtor_Update',
@@ -2984,6 +3038,8 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
     device_read: 'Device_Read',
     device_update: 'Device_Update',
     device_delete: 'Device_Delete',
+
+    device_read_companyzero: 'Device_Read_CompanyZero',
 
     deviceManager_create: 'DeviceManager_Create',
     deviceManager_read: 'DeviceManager_Read',
@@ -3055,7 +3111,12 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
 	eventType_update :'EventType_Update',
 	eventType_delete : 'EventType_Delete',
 
-	externalWebLinkType_read: 'ExternalWebLinkType_Read',
+    eventType_alarmCalls_read: 'EventType_AlarmCalls_Read',
+    eventType_systemCalls_read: 'EventType_SystemCalls_Read',
+    eventType_callCentreCalls_read: 'EventType_CallCentreCalls_Read',
+    eventType_crmIncidents_read: 'EventType_CrmIncidents_Read',
+
+    externalWebLinkType_read: 'ExternalWebLinkType_Read',
 
 	incident_create : 'Incident_Create',
 	incident_read : 'Incident_Read',
@@ -3274,7 +3335,9 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
     subscriber_update: 'Subscriber_Update',
     subscriber_delete: 'Subscriber_Delete',
 
-	subscriberHistory_read : 'SubscriberHistory_Read',
+    subscriber_update_subscriberState: "Subscriber_Update_SubscriberState",
+
+    subscriberHistory_read : 'SubscriberHistory_Read',
 
 	subscriberExternalWebLink_create: 'SubscriberExternalWebLink_Create',
 	subscriberExternalWebLink_read: 'SubscriberExternalWebLink_Read',
@@ -3285,6 +3348,11 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
     subscriberState_read: 'SubscriberState_Read',
     subscriberState_update: 'SubscriberState_Update',
     subscriberState_delete: 'SubscriberState_Delete',
+
+    subscriberStateChangeReason_create: 'SubscriberStateChangeReason_Create',
+    subscriberStateChangeReason_read: 'SubscriberStateChangeReason_Read',
+    subscriberStateChangeReason_update: 'SubscriberStateChangeReason_Update',
+    subscriberStateChangeReason_delete: 'SubscriberStateChangeReason_Delete',
 
     tariff_create: 'Tariff_Create',
     tariff_read: 'Tariff_Read',
@@ -3321,6 +3389,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').constant('
     warden_read: 'Warden_Read',
     warden_update: 'Warden_Update',
     warden_delete: 'Warden_Delete'
+
 });
 
 angular.module('verklizan.umox.common.html5.vkz-webrequests.general').factory('CustomServiceUrl',
@@ -4041,66 +4110,72 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').factory('S
 
 //Responsible for checking tasks against the authorization.
 angular.module('verklizan.umox.common.html5.vkz-webrequests.general').provider('taskAuthorizationService',
-['authorizationTaskConstants', function (authorizationTaskConstants) {
-    'use strict';
+    ['authorizationTaskConstants', function (authorizationTaskConstants) {
+        'use strict';
 
-    var taskAuthorizationSupported = false;
+        var taskAuthorizationSupported = false;
 
-    this.supportTaskBasedAuthorization = function(isSupported) {
-        taskAuthorizationSupported = isSupported;
-    };
-
-    this.$get = ['authorizationTaskConstants', function(authorizationTaskConstants) {
-
-        var tasks = null;
-
-        var taskAuthorizationService = {};
-
-        taskAuthorizationService.isAuthorizedForTask = function(taskName) {
-
-            //If app doesn't support taskAuthorization, then it will always return true.
-            if(taskAuthorizationSupported === false) {
-                return true;
-            }
-
-            //Used for testing and methods without a task.
-            if(taskName === authorizationTaskConstants.none) {
-                return true;
-            }
-
-            if(tasks === null || angular.isDefined(taskName) === false) {
-                return false;
-            }
-
-            if (typeof tasks[taskName] === 'undefined') {
-                throw new Error('this task is not present in the authorizationTasksConstants or in this service version');
-            } else {
-                return tasks[taskName];
-            }
+        this.supportTaskBasedAuthorization = function (isSupported) {
+            taskAuthorizationSupported = isSupported;
         };
 
-        taskAuthorizationService.getTasks = function() {
-            return tasks;
-        };
+        this.$get = ['authorizationTaskConstants', function (authorizationTaskConstants) {
 
-        taskAuthorizationService.setTasks = function(_tasks) {
-            tasks = _tasks;
-        };
+            var tasks = null;
 
-        taskAuthorizationService.clearTasks = function() {
-            tasks = null;
-        };
+            var taskAuthorizationService = {};
 
-        taskAuthorizationService.isTaskAuthorizationSupported = function() {
-            return taskAuthorizationSupported;
-        };
+            taskAuthorizationService.isAuthorizedForTask = function (taskString) {
 
-        return taskAuthorizationService;
-    }];
-}]);
+                //If app doesn't support taskAuthorization, then it will always return true.
+                if (taskAuthorizationSupported === false) {
+                    return true;
+                }
+                //Used for testing and methods without a task.
+                if (taskString === authorizationTaskConstants.none) {
+                    return true;
+                }
+                if (tasks === null || angular.isDefined(taskString) === false) {
+                    return false;
+                }
+
+                var taskNames = taskString.split(/[,;]/);
+                var isAuthorized = false;
+
+                for(var i in taskNames) {
+                    var taskName = taskNames[i].trim();
+
+                    if (typeof tasks[taskName] === 'undefined') {
+                        throw new Error('this task is not present in the authorizationTasksConstants or in this service version');
+                    } else if (tasks[taskName]) {
+                        isAuthorized = true;
+                    }
+                }
+                return isAuthorized;
+            };
+
+            taskAuthorizationService.getTasks = function () {
+                return tasks;
+            };
+
+            taskAuthorizationService.setTasks = function (_tasks) {
+                tasks = _tasks;
+            };
+
+            taskAuthorizationService.clearTasks = function () {
+                tasks = null;
+            };
+
+            taskAuthorizationService.isTaskAuthorizationSupported = function () {
+                return taskAuthorizationSupported;
+            };
+
+            return taskAuthorizationService;
+        }];
+    }]);
 
 angular.module('verklizan.umox.common.html5.vkz-webrequests.general').service('umoOperationFactory',
-    ['$q', '$window', 'webRequestService', 'GenericHttpErrorHandler', 'taskAuthorizationService', function ($q, $window, webRequestService, GenericHttpErrorHandler, taskAuthorizationService) {
+    ['$q', '$window', 'webRequestService', 'GenericHttpErrorHandler', 'taskAuthorizationService', 'cachedSessionStorageService', function ($q, $window, webRequestService, GenericHttpErrorHandler, taskAuthorizationService, cachedSessionStorageService) {
         "use strict";
 
         this.createSecureProxyOperation = function (serviceUrl, requestDataResolver, taskName) {
@@ -4114,7 +4189,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').service('u
                 var requestData = getRequestDataIfExists(arguments, requestDataResolver, errorHandler);
 
                 var isAuthorized = taskAuthorizationService.isAuthorizedForTask(taskName);
-                if(isAuthorized) {
+                if (isAuthorized) {
                     return webRequestService.authenticatedPost(url, requestData, errorHandler);
                 } else {
                     return $q.reject('unauthorized exception');
@@ -4154,11 +4229,38 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').service('u
             };
         };
 
+        this.createProxyOperationWithPassageIDHeader = function (serviceUrl, requestDataResolver) {
+            checkIfDataResolverIsValid(requestDataResolver);
+            checkIfUrlIsValid(serviceUrl);
+
+            return function () {
+                var url = serviceUrl.toString();
+                var errorHandler = getErrorHandlerFromArguments(arguments);
+                var requestData = getRequestDataIfExists(arguments, requestDataResolver, errorHandler);
+
+                var headerObj = {};
+                var tkn = cachedSessionStorageService.getSessionStorageItem("tkn");
+                if (tkn !== null) {
+                    headerObj.PassageIDToken = tkn;
+                }
+
+                var ott = cachedSessionStorageService.getSessionStorageItem("ott");
+                if (ott !== null) {
+                    headerObj.PidToken = ott;
+                }
+
+                return webRequestService.post(url, requestData, errorHandler, headerObj);
+            };
+        };
+
+
         var getRequestDataIfExists = function (args, requestDataResolver, errorHandler) {
             if ($window.isNullOrUndefined(errorHandler) === false) {
                 Array.prototype.pop.apply(args);
             }
+
             return requestDataResolver.apply(null, args);
+
         };
 
         var checkIfDataResolverIsValid = function (dataResolver) {
@@ -4167,8 +4269,8 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').service('u
             }
         };
 
-        var checkIfTaskExist = function(taskName, serviceUrl) { 
-            if(!angular.isDefined(taskName)) { 
+        var checkIfTaskExist = function (taskName, serviceUrl) {
+            if (!angular.isDefined(taskName)) {
                 throw "task name is not present in authorization task constants mapping for service url : " + serviceUrl;
             }
         }
@@ -4277,18 +4379,28 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').provider('
             // ============================
             // Public methods
             // ============================
-            webRequestService.get = function (url, searchParameters, errorHandler) {
-                return $http.get(url, { params: searchParameters, timeout: defaultTimeoutInMs }).catch(function (response) {
+            webRequestService.get = function (url, searchParameters, errorHandler, customHeaders) {
+                var headerMap = {};
+                FillCustomHeaders(headerMap, customHeaders);
+
+                return $http.get(url, {
+                    params: searchParameters,
+                    timeout: defaultTimeoutInMs,
+                    headers: headerMap
+                }).catch(function (response) {
                     return handleError(response, errorHandler);
                 });
             };
 
-            webRequestService.authenticatedGet = function (url, searchParameters, errorHandler) {
+            webRequestService.authenticatedGet = function (url, searchParameters, errorHandler, customHeaders) {
                 if (!securityTokenService.tokenIsPresent()) {
                     return getAuthorizationError(errorHandler, url);
                 }
 
+                //TODO - the loginHeader object needs to be investigated
+                // The object structure doesn't match the usage
                 var loginHeader = createIdentityHeader();
+                FillCustomHeaders(loginHeader.headers, customHeaders);
 
                 return $http.get(url, createGetOptions(searchParameters, loginHeader))
                     .then(renewTokenExpiration).catch(function (response) {
@@ -4296,22 +4408,27 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').provider('
                     });
             };
 
-            webRequestService.post = function (url, data, errorHandler) {
+            webRequestService.post = function (url, data, errorHandler, customHeaders) {
                 var header = {};
                 addTimeoutHeader(header);
 
-                return $http.post(url, data, header).catch(function (response) {
+                // Add other custom headers if needed
+                FillCustomHeaders(header, customHeaders);
+
+                return $http.post(url, data, { headers: header }).catch(function (response) {
                     return handleError(response, errorHandler, data);
                 });
             };
 
-            webRequestService.authenticatedPost = function (url, data, errorHandler) {
+            webRequestService.authenticatedPost = function (url, data, errorHandler, customHeaders) {
                 if (!securityTokenService.tokenIsPresent()) {
                     return getAuthorizationError(errorHandler, url);
                 }
 
                 var loginHeader = createIdentityHeader();
                 addTimeoutHeader(loginHeader);
+
+                FillCustomHeaders(loginHeader.headers, customHeaders);
 
                 return $http.post(url, data, loginHeader).then(function (response) {
                     renewTokenExpiration();
@@ -4321,7 +4438,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').provider('
                 });
             };
 
-            webRequestService.authenticatedDownloadPost = function (url, data, errorHandler) {
+            webRequestService.authenticatedDownloadPost = function (url, data, errorHandler, customHeaders) {
                 if (!securityTokenService.tokenIsPresent()) {
                     return getAuthorizationError(errorHandler, url);
                 }
@@ -4329,6 +4446,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').provider('
                 var loginHeader = createIdentityHeader();
                 addTimeoutHeader(loginHeader);
                 addDownloadHeader(loginHeader);
+                FillCustomHeaders(loginHeader.headers, customHeaders);
 
                 return $http.post(url, data, loginHeader).then(function (response) {
                     renewTokenExpiration();
@@ -4341,6 +4459,16 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.general').provider('
             // ============================
             // Private methods
             // ============================
+            function FillCustomHeaders(headerMap, customHeaders) {
+                if (customHeaders) {
+                    for (var header in customHeaders) {
+                        headerMap[header] = customHeaders[header];
+                    }
+                }
+
+                return headerMap;
+            }
+
             function createGetOptions(searchParams, headers) {
                 var options = {
                     params: searchParams, timeout: defaultTimeoutInMs
@@ -4532,17 +4660,152 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 		"use strict";
 
 		return {
-			searchProfessionalCaregivers: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.searchProfessionalCaregivers,
-				serviceRequestBodyFactory.createSearchPageBody,
-				authorizationTaskConstants.caregiver_read
+			//CaregiverGroup
+			createCaregiverGroupWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createCaregiverGroupWithDto,
+				serviceRequestBodyFactory.createParameteredBody('caregiverGroup'),
+				authorizationTaskConstants.caregiverGroup_create
 			),
-			readProfessionalCaregiverPage: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverPage,
+			searchCaregiverGroups: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.searchCaregiverGroups,
+				serviceRequestBodyFactory.createSearchPageBody,
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			readCaregiverGroupPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupPage,
 				serviceRequestBodyFactory.createSimplePageBody,
-				authorizationTaskConstants.caregiver_read
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			readCaregiverGroupVisualViewInformation: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupVisualViewInformation,
+				serviceRequestBodyFactory.createParameteredBody('caregiverGroupId'),
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			readCaregiverGroupDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupDto,
+				serviceRequestBodyFactory.createParameteredBody('caregiverGroupId'),
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			updateCaregiverGroupWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.updateCaregiverGroupWithDto,
+				serviceRequestBodyFactory.createParameteredBody('caregiverGroupDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			readCaregiverGroupMembersPage: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.readCaregiverGroupMembersPage,
+			    serviceRequestBodyFactory.createComplexPageBody('caregiverGroupId'),
+			    authorizationTaskConstants.caregiver_read
+			),
+			createCaregiverGroupMemberLink: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.createCaregiverGroupMemberLink,
+			    serviceRequestBodyFactory.createParameteredBody('caregiverGroupId', 'caregiverId'),
+			    authorizationTaskConstants.caregiverGroup_update
+			),
+			deleteCaregiverGroupsWithDto: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.careProviderManagementService.deleteCaregiverGroupsWithDto,
+                serviceRequestBodyFactory.createParameteredBody('caregiverGroupsToDelete'),
+                authorizationTaskConstants.caregiverGroup_delete
+            ),
+			deleteCaregiverGroupMemberLink: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.deleteCaregiverGroupMemberLink,
+			    serviceRequestBodyFactory.createParameteredBody('caregiverGroupId', 'caregiverId'),
+			    authorizationTaskConstants.caregiverGroup_update
+			),
+	
+			readCaregiverGroupHolidayPage: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.readCaregiverGroupHolidayPage,
+			    serviceRequestBodyFactory.createComplexPageBody('caregiverGroupId'),
+			    authorizationTaskConstants.caregiverGroup_read
+			),
+			readCaregiverGroupHoliday: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.readCaregiverGroupHoliday,
+			    serviceRequestBodyFactory.createParameteredBody('holidayId'),
+			    authorizationTaskConstants.caregiverGroup_read
+			),
+			createCaregiverGroupHoliday: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.createCaregiverGroupHoliday,
+			    serviceRequestBodyFactory.createParameteredBody('holiday'),
+			    authorizationTaskConstants.caregiverGroup_update
+			),
+			updateCaregiverGroupHoliday: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.updateCaregiverGroupHoliday,
+			    serviceRequestBodyFactory.createParameteredBody('holiday'),
+			    authorizationTaskConstants.caregiverGroup_update
+			),
+			deleteCaregiverGroupHoliday: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.deleteCaregiverGroupHoliday,
+			    serviceRequestBodyFactory.createParameteredBody('holiday'),
+			    authorizationTaskConstants.caregiverGroup_update
+			),
+			createCaregiverGroupHolidayList: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.createCaregiverGroupHolidayList,
+			    serviceRequestBodyFactory.createParameteredBody('holidayList'),
+			    authorizationTaskConstants.caregiverGroup_update
 			),
 
+			createCaregiverGroupPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createCaregiverGroupPhoneNumberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			createCaregiverGroupPhoneNumberListWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createCaregiverGroupPhoneNumberListWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberListDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			readCaregiverGroupPhoneNumberDtoPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupPhoneNumberDtoPage,
+				serviceRequestBodyFactory.createComplexPageBody('caregiverGroupId'),
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			readCaregiverGroupPhoneNumberDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupPhoneNumberDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			updateCaregiverGroupPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.updateCaregiverGroupPhoneNumberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			deleteCaregiverGroupPhoneNumber: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.deleteCaregiverGroupPhoneNumber,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+
+			createCaregiverGroupNoteWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createCaregiverGroupNoteWithDto,
+				serviceRequestBodyFactory.createParameteredBody('noteDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			createCaregiverGroupNoteListWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createCaregiverGroupNoteListWithDto,
+				serviceRequestBodyFactory.createParameteredBody('noteListDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			readCaregiverGroupNoteDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupNoteDto,
+				serviceRequestBodyFactory.createParameteredBody('noteId'),
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			readCaregiverGroupNoteDtoPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCaregiverGroupNoteDtoPage,
+				serviceRequestBodyFactory.createComplexPageBody('caregiverGroupId'),
+				authorizationTaskConstants.caregiverGroup_read
+			),
+			updateCaregiverGroupNoteWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.updateCaregiverGroupNoteWithDto,
+				serviceRequestBodyFactory.createParameteredBody('noteDto'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			deleteCaregiverGroupNote: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.deleteCaregiverGroupNote,
+				serviceRequestBodyFactory.createParameteredBody('noteId'),
+				authorizationTaskConstants.caregiverGroup_update
+			),
+			
+			//CaregiverType
 			readCaregiverTypePage: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readCaregiverTypePage,
 				serviceRequestBodyFactory.createSimplePageBody,
@@ -4569,6 +4832,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 				authorizationTaskConstants.caregiverType_delete
 			),
 
+			//Caregiver
 			readCaregiversForSubscriberPage: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readCaregiversForSubscriberPage,
 				serviceRequestBodyFactory.createComplexPageBody('subscriberId'),
@@ -4594,17 +4858,6 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 				serviceRequestBodyFactory.createComplexPageBody('schemeId'),
 				authorizationTaskConstants.caregiver_read
 			),
-
-			readProfessionalCaregiverContactItemPage: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverContactItemPage,
-				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
-				authorizationTaskConstants.professionalCaregiver_read
-			),
-			readRelationalCaregiverContactItemPage: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverContactItemPage,
-				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
-				authorizationTaskConstants.relationalCaregiver_read
-			),
 			readCaregiversForSubscriberResidenceSchemePage: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readCaregiversForSubscriberResidenceSchemePage,
 				serviceRequestBodyFactory.createComplexPageBody('subscriberId'),
@@ -4616,12 +4869,28 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 				authorizationTaskConstants.caregiver_read
 			),
 
+
+			//ProfessionalCaregiver 
+			searchProfessionalCaregivers: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.searchProfessionalCaregivers,
+				serviceRequestBodyFactory.createSearchPageBody,
+				authorizationTaskConstants.caregiver_read
+			),
+			readProfessionalCaregiverPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverPage,
+				serviceRequestBodyFactory.createSimplePageBody,
+				authorizationTaskConstants.caregiver_read
+			),
+			readProfessionalCaregiverContactItemPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverContactItemPage,
+				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
+				authorizationTaskConstants.professionalCaregiver_read
+			),
 			createProfessionalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.createProfessionalCaregiverWithDto,
 				serviceRequestBodyFactory.createParameteredBody('caregiver'),
 				authorizationTaskConstants.professionalCaregiver_create
 			),
-
 			readProfessionalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverWithDto,
 				serviceRequestBodyFactory.createParameteredBody('caregiverId'),
@@ -4632,13 +4901,17 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 				serviceRequestBodyFactory.createParameteredBody('caregiver'),
 				authorizationTaskConstants.professionalCaregiver_update
 			),
-			deleteProfessionalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.deleteProfessionalCaregiverWithDto,
-				serviceRequestBodyFactory.createParameteredBody('caregiverId'),
-				authorizationTaskConstants.professionalCaregiver_delete
+            deleteProfessionalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.careProviderManagementService.deleteProfessionalCaregiverWithDto,
+                serviceRequestBodyFactory.createParameteredBody('caregiverId'),
+                authorizationTaskConstants.professionalCaregiver_delete
+            ),
+			deleteAndReplaceProfessionalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.careProviderManagementService.deleteAndReplaceProfessionalCaregiverWithDto,
+                serviceRequestBodyFactory.createParameteredBody('caregiversToDelete', 'replaceProfessionalCaregiverId'),
+                authorizationTaskConstants.professionalCaregiver_delete
 			),
-
-			///NOTES - prof
+			
 			createProfessionalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.createProfessionalCaregiverNoteWithDto,
 				serviceRequestBodyFactory.createParameteredBody('note'),
@@ -4654,163 +4927,51 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 				serviceRequestBodyFactory.createParameteredBody('noteId'),
 				authorizationTaskConstants.professionalCaregiver_read
 			),
-
 			readProfessionalCaregiverNoteDtoPage: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverNoteDtoPage,
 				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
 				authorizationTaskConstants.professionalCaregiver_read
 			),
-
 			updateProfessionalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.updateProfessionalCaregiverNoteWithDto,
 				serviceRequestBodyFactory.createParameteredBody('note'),
 				authorizationTaskConstants.professionalCaregiver_update
 			),
-
 			deleteProfessionalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.deleteProfessionalCaregiverNoteWithDto,
 				serviceRequestBodyFactory.createParameteredBody('noteId'),
 				authorizationTaskConstants.professionalCaregiver_update
 			),
 
-			createRelationalCaregiverForSubscriberWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverForSubscriberWithDto,
-				serviceRequestBodyFactory.createParameteredBody('caregiver', 'subscriberId', 'order', 'isNextOfKin'),
-				authorizationTaskConstants.relationalCaregiver_create
-			),
-
-			readRelationalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverWithDto,
-				serviceRequestBodyFactory.createParameteredBody('caregiverId'),
-				authorizationTaskConstants.relationalCaregiver_read
-			),
-
-			updateRelationalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.updateRelationalCaregiverWithDto,
-				serviceRequestBodyFactory.createParameteredBody('caregiver'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			createRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverNoteWithDto,
-				serviceRequestBodyFactory.createParameteredBody('note'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			createRelationalCaregiverNoteList: umoOperationFactory.createSecureProxyOperation(
-			    umoxServiceUrls.careProviderManagementService.createRelationalCaregiverNoteList,
-			    serviceRequestBodyFactory.createParameteredBody('noteList'),
-			    authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			readRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverNoteWithDto,
-				serviceRequestBodyFactory.createParameteredBody('noteId'),
-				authorizationTaskConstants.relationalCaregiver_read
-			),
-
-			readRelationalCaregiverNoteDtoPage: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverNoteDtoPage,
-				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
-				authorizationTaskConstants.relationalCaregiver_read
-			),
-
-			updateRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.updateRelationalCaregiverNoteWithDto,
-				serviceRequestBodyFactory.createParameteredBody('note'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			deleteRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.deleteRelationalCaregiverNoteWithDto,
-				serviceRequestBodyFactory.createParameteredBody('noteId'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-
-			// PHONE NUMBERS
-
 			createProfessionalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.createProfessionalCaregiverPhoneNumberWithDto,
 				serviceRequestBodyFactory.createParameteredBody('phoneNumber'),
 				authorizationTaskConstants.professionalCaregiver_update
 			),
-
 			readProfessionalCaregiverPhoneNumberDtoPage: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverPhoneNumberDtoPage,
 				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
 				authorizationTaskConstants.professionalCaregiver_read
 			),
-
 			readProfessionalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.readProfessionalCaregiverPhoneNumberWithDto,
 				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
 				authorizationTaskConstants.professionalCaregiver_read
 			),
-
 			updateProfessionalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.updateProfessionalCaregiverPhoneNumberWithDto,
 				serviceRequestBodyFactory.createParameteredBody('phoneNumber'),
 				authorizationTaskConstants.professionalCaregiver_update
 			),
-
 			deleteProfessionalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.deleteProfessionalCaregiverPhoneNumberWithDto,
 				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
 				authorizationTaskConstants.professionalCaregiver_update
 			),
-
 			createProfessionalCaregiverPhoneNumberList: umoOperationFactory.createSecureProxyOperation(
 				umoxServiceUrls.careProviderManagementService.createProfessionalCaregiverPhoneNumberList,
 				serviceRequestBodyFactory.createParameteredBody('phoneNumberList'),
 				authorizationTaskConstants.professionalCaregiver_update
-			),
-
-			createRelationalCaregiverPhoneNumberList: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverPhoneNumberList,
-				serviceRequestBodyFactory.createParameteredBody('phoneNumberList'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			createRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverPhoneNumberWithDto,
-				serviceRequestBodyFactory.createParameteredBody('phoneNumber'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			readRelationalCaregiverPhoneNumberDtoPage: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverPhoneNumberDtoPage,
-				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
-				authorizationTaskConstants.relationalCaregiver_read
-			),
-
-			readRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverPhoneNumberWithDto,
-				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
-				authorizationTaskConstants.relationalCaregiver_read
-			),
-
-			updateRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.updateRelationalCaregiverPhoneNumberWithDto,
-				serviceRequestBodyFactory.createParameteredBody('phoneNumber'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			deleteRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.deleteRelationalCaregiverPhoneNumberWithDto,
-				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
-				authorizationTaskConstants.relationalCaregiver_update
-			),
-
-			createRelationalCaregiverAvailability: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverAvailability,
-				serviceRequestBodyFactory.createParameteredBody('caregiverId', 'availability'),
-				authorizationTaskConstants.relationalCaregiver_create
-			),
-			readRelationalCaregiverAvailability: umoOperationFactory.createSecureProxyOperation(
-				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverAvailability,
-				serviceRequestBodyFactory.createParameteredBody('caregiverId'),
-				authorizationTaskConstants.relationalCaregiver_read
 			),
 
 			createProfessionalCaregiverAvailability: umoOperationFactory.createSecureProxyOperation(
@@ -4855,6 +5016,102 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 			    authorizationTaskConstants.professionalCaregiver_update
 			),
 
+
+			//RelationalCaregiver
+			readRelationalCaregiverContactItemPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverContactItemPage,
+				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+			createRelationalCaregiverForSubscriberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverForSubscriberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('caregiver', 'subscriberId', 'order', 'isNextOfKin'),
+				authorizationTaskConstants.relationalCaregiver_create
+			),
+			readRelationalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverWithDto,
+				serviceRequestBodyFactory.createParameteredBody('caregiverId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+			updateRelationalCaregiverWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.updateRelationalCaregiverWithDto,
+				serviceRequestBodyFactory.createParameteredBody('caregiver'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+
+			createRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverNoteWithDto,
+				serviceRequestBodyFactory.createParameteredBody('note'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+			createRelationalCaregiverNoteList: umoOperationFactory.createSecureProxyOperation(
+			    umoxServiceUrls.careProviderManagementService.createRelationalCaregiverNoteList,
+			    serviceRequestBodyFactory.createParameteredBody('noteList'),
+			    authorizationTaskConstants.relationalCaregiver_update
+			),
+			readRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverNoteWithDto,
+				serviceRequestBodyFactory.createParameteredBody('noteId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+			readRelationalCaregiverNoteDtoPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverNoteDtoPage,
+				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+			updateRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.updateRelationalCaregiverNoteWithDto,
+				serviceRequestBodyFactory.createParameteredBody('note'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+			deleteRelationalCaregiverNoteWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.deleteRelationalCaregiverNoteWithDto,
+				serviceRequestBodyFactory.createParameteredBody('noteId'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+
+			createRelationalCaregiverPhoneNumberList: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverPhoneNumberList,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberList'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+			createRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverPhoneNumberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumber'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+			readRelationalCaregiverPhoneNumberDtoPage: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverPhoneNumberDtoPage,
+				serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+			readRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverPhoneNumberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+			updateRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.updateRelationalCaregiverPhoneNumberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumber'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+			deleteRelationalCaregiverPhoneNumberWithDto: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.deleteRelationalCaregiverPhoneNumberWithDto,
+				serviceRequestBodyFactory.createParameteredBody('phoneNumberId'),
+				authorizationTaskConstants.relationalCaregiver_update
+			),
+
+			createRelationalCaregiverAvailability: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createRelationalCaregiverAvailability,
+				serviceRequestBodyFactory.createParameteredBody('caregiverId', 'availability'),
+				authorizationTaskConstants.relationalCaregiver_create
+			),
+			readRelationalCaregiverAvailability: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readRelationalCaregiverAvailability,
+				serviceRequestBodyFactory.createParameteredBody('caregiverId'),
+				authorizationTaskConstants.relationalCaregiver_read
+			),
+
 		    readRelationalCaregiverHolidayPage: umoOperationFactory.createSecureProxyOperation(
 		        umoxServiceUrls.careProviderManagementService.readRelationalCaregiverHolidayPage,
 		        serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
@@ -4880,11 +5137,34 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('car
 		        serviceRequestBodyFactory.createParameteredBody('holiday'),
 		        authorizationTaskConstants.relationalCaregiver_delete
 		    ),
-			createRelationalCaregiverHolidayList: umoOperationFactory.createSecureProxyOperation(
-			    umoxServiceUrls.careProviderManagementService.createRelationalCaregiverHolidayList,
-			    serviceRequestBodyFactory.createParameteredBody('holidayList'),
-			    authorizationTaskConstants.relationalCaregiver_update
+            createRelationalCaregiverHolidayList: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.careProviderManagementService.createRelationalCaregiverHolidayList,
+                serviceRequestBodyFactory.createParameteredBody('holidayList'),
+                authorizationTaskConstants.relationalCaregiver_update
+            ),
+
+			//CareProvider
+			isPinIdUnique: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.careProviderManagementService.isPinIdUnique,
+                serviceRequestBodyFactory.createParameteredBody('pinId', 'ignoreId'),
+                authorizationTaskConstants.caregiver_read
+            ),
+			createCareProviderAvailability: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.createCareProviderAvailability,
+				serviceRequestBodyFactory.createParameteredBody('careProviderId', 'availability'),
+				authorizationTaskConstants.relationalCaregiver_create + ',' +
+				authorizationTaskConstants.professionalCaregiver_create + ',' +
+				authorizationTaskConstants.caregiverGroup_create
+			),
+			readCareProviderAvailability: umoOperationFactory.createSecureProxyOperation(
+				umoxServiceUrls.careProviderManagementService.readCareProviderAvailability,
+				serviceRequestBodyFactory.createParameteredBody('careProviderId'),
+				authorizationTaskConstants.relationalCaregiver_read + ',' +
+				authorizationTaskConstants.professionalCaregiver_read + ',' +
+				authorizationTaskConstants.caregiverGroup_read + ',' +
+				authorizationTaskConstants.caregiver_read
 			)
+
 		};
 	}]);
 angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('contractManagementServiceProxy',
@@ -5064,9 +5344,19 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('con
             serviceRequestBodyFactory.createParameteredBody('subscriberId', 'deviceId', 'newDeviceStateId', 'isDirect'),
             authorizationTaskConstants.contract_update
         ),
+        createSubscriberDeviceDtoLink: umoOperationFactory.createSecureProxyOperation(
+            umoxServiceUrls.contractManagementService.createSubscriberDeviceDtoLink,
+            serviceRequestBodyFactory.createParameteredBody('subscriberId', 'updatedDevice', 'isDirect'),
+            authorizationTaskConstants.contract_update
+        ),
         deleteSubscriberDeviceLink: umoOperationFactory.createSecureProxyOperation(
             umoxServiceUrls.contractManagementService.deleteSubscriberDeviceLink,
             serviceRequestBodyFactory.createParameteredBody('subscriberId', 'deviceId', 'newDeviceStateId'),
+            authorizationTaskConstants.contract_update
+        ),
+        deleteSubscriberDeviceDtoLink: umoOperationFactory.createSecureProxyOperation(
+            umoxServiceUrls.contractManagementService.deleteSubscriberDeviceDtoLink,
+            serviceRequestBodyFactory.createParameteredBody('subscriberId', 'updatedDevice'),
             authorizationTaskConstants.contract_update
         ),
         createResidenceDeviceLink: umoOperationFactory.createSecureProxyOperation(
@@ -5074,10 +5364,20 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('con
             serviceRequestBodyFactory.createParameteredBody('residenceId', 'deviceId', 'newDeviceStateId', 'isDirect'),
             authorizationTaskConstants.contract_update
         ),
+        createResidenceDeviceDtoLink: umoOperationFactory.createSecureProxyOperation(
+            umoxServiceUrls.contractManagementService.createResidenceDeviceDtoLink,
+            serviceRequestBodyFactory.createParameteredBody('residenceId', 'updatedDevice', 'isDirect'),
+            authorizationTaskConstants.contract_update
+        ),
         deleteResidenceDeviceLink: umoOperationFactory.createSecureProxyOperation(
             umoxServiceUrls.contractManagementService.deleteResidenceDeviceLink,
             serviceRequestBodyFactory.createParameteredBody('residenceId', 'deviceId', 'newDeviceStateId'),
-                  authorizationTaskConstants.contract_update
+            authorizationTaskConstants.contract_update
+        ),
+        deleteResidenceDeviceDtoLink: umoOperationFactory.createSecureProxyOperation(
+            umoxServiceUrls.contractManagementService.deleteResidenceDeviceDtoLink,
+            serviceRequestBodyFactory.createParameteredBody('residenceId', 'updatedDevice'),
+            authorizationTaskConstants.contract_update
         ),
         getSubscriberCostInfo: umoOperationFactory.createSecureProxyOperation(
             umoxServiceUrls.contractManagementService.getSubscriberCostInfo,
@@ -5362,6 +5662,11 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('dev
             serviceRequestBodyFactory.createParameteredBody('characteristic'),
             authorizationTaskConstants.device_update
         ),
+        createDeviceCharacteristicList: umoOperationFactory.createSecureProxyOperation(
+            umoxServiceUrls.deviceManagementService.createDeviceCharacteristicList,
+            serviceRequestBodyFactory.createParameteredBody('characteristicList'),
+            authorizationTaskConstants.device_update
+        ),
         readDeviceCharacteristicWithDto: umoOperationFactory.createSecureProxyOperation(
             umoxServiceUrls.deviceManagementService.readDeviceCharacteristicWithDto,
             serviceRequestBodyFactory.createParameteredBody('characteristicId'),
@@ -5564,9 +5869,14 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('log
         "use strict";
 
         return {
-            login: umoOperationFactory.createProxyOperation(
+            login: umoOperationFactory.createProxyOperationWithPassageIDHeader(
                 umoxServiceUrls.loginService.login,
                 serviceRequestBodyFactory.createParameteredBody('username', 'password', 'desiredModules')
+            ),
+
+            validate2FA: umoOperationFactory.createProxyOperation(
+                umoxServiceUrls.loginService.validate2FA,
+                serviceRequestBodyFactory.createParameteredBody('requestSignature', 'desiredModules')
             ),
 
             logout: umoOperationFactory.createSecureProxyOperation(
@@ -5579,8 +5889,13 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('log
                 umoxServiceUrls.loginService.readCurrentUserInfo,
                 serviceRequestBodyFactory.createParameterlessBody,
                 authorizationTaskConstants.none
-            )
+            ),
 
+            buildPassageIdRedirectUri: umoOperationFactory.createProxyOperation(
+                umoxServiceUrls.loginService.buildPassageIdRedirectUri,
+                serviceRequestBodyFactory.createParameteredBody('clientId', 'clientState'),
+                authorizationTaskConstants.none
+            )
         };
     }]);
 
@@ -5669,6 +5984,63 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('per
 
 		};
 	}]);
+angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('pomasServiceProxy',
+    ['$http', 'pomasUrlSettingsService', function ($http, pomasUrlSettingsService) {
+        "use strict";
+
+        var pomasServiceProxy = {};
+
+        var getServiceMethodUrl = function (methodPath) {
+            var baseUrlObject = pomasUrlSettingsService.getBaseUrlObject();
+                var baseUrl = baseUrlObject.host + (baseUrlObject.port ? ":" + baseUrlObject.port : "");
+                
+                return [baseUrl, "pomas", methodPath].join('/');
+        }
+
+        var getHttpOptions = function (credentialsInBase64) {
+            return {
+                headers : {
+                    "Authorization": "Basic " + credentialsInBase64
+                }
+            };
+        }
+
+        pomasServiceProxy.getPositionById = function (credentialsInBase64, positionId) {
+            return $http.get(
+                getServiceMethodUrl("api/Positions/ById/" + positionId), 
+                getHttpOptions(credentialsInBase64));
+        }
+        pomasServiceProxy.getPositionByIncidentId = function (credentialsInBase64, incidentId) {
+            return $http.get(
+                getServiceMethodUrl("api/Positions/ByIncidentId/" + incidentId), 
+                getHttpOptions(credentialsInBase64));
+        }
+        pomasServiceProxy.getPositionByDeviceId = function (credentialsInBase64, deviceId) {
+            return $http.get(
+                getServiceMethodUrl("api/Positions/ByDeviceId/" + deviceId),
+                getHttpOptions(credentialsInBase64));
+        }
+        pomasServiceProxy.getPositionByPhoneNumber = function (credentialsInBase64, e164PhoneNumber) {
+            return $http.post(
+                getServiceMethodUrl("api/Positions/ByPhoneNumber"), 
+                { "phoneNumber": e164PhoneNumber },
+                getHttpOptions(credentialsInBase64));
+        }
+        pomasServiceProxy.addPosition = function (credentialsInBase64, positionObject) {
+            return $http.post(
+                getServiceMethodUrl("api/Positions/Add"), 
+                positionObject,
+                getHttpOptions(credentialsInBase64));
+        }
+        pomasServiceProxy.deletePosition = function (credentialsInBase64, positionId) {
+            return $http.delete(
+                getServiceMethodUrl("api/Positions/" + positionId),
+                getHttpOptions(credentialsInBase64));
+        }
+
+        return pomasServiceProxy;
+    }]);
+
 angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("urlConstants", {
     auditTrailService: [
 		"readAuditPage",
@@ -5678,8 +6050,10 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
     ],
     loginService: [
         "login",
+        "validate2FA",
         "logout",
-        "readCurrentUserInfo"
+        "readCurrentUserInfo",
+        "buildPassageIdRedirectUri"
     ],
     settingsService: [
         "getResponderSettings",
@@ -5705,6 +6079,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "requestPasswordReset",
         "resetPassword",
         "changeUserPassword",
+        "selfChangeUserPassword",
         "registerSubscriber",
         "activateUserAccount",
         "checkTaskAuthorization",
@@ -5742,6 +6117,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "validForDeletion",
         "readModulePage",
         "readRoleDtoPage",
+        "readUserRoleDtoPage",
         "readModuleWithApplicableTasksPage"
     ],
     subscriberManagementService: [
@@ -5822,6 +6198,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "readSubscriberState",
 
         "readSubscriberStateHistoryDtoPage",
+        "deleteSubscriberStateHistory",
 
         "createSubscriberCaregiverLink",
         "updateSubscriberCaregiverLink",
@@ -5875,7 +6252,16 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
 
         "readExternalWebLinkTypePage",
 
-        "readSubscribersForCaregiverPage"
+        "readSubscribersForCaregiverPage",
+        "readSubscribersForCaregiverGroupPage",
+
+        "updateStateOfSubscriberWithSpecificTask",
+
+        "readSubscriberStateChangeReasonPage",
+        "createSubscriberStateChangeReason",
+        "readSubscriberStateChangeReason",
+        "updateSubscriberStateChangeReason",
+        "deleteSubscriberStateChangeReason"
     ],
     residenceManagementService: [
         "readResidence",
@@ -5945,6 +6331,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "validateUKPostalCode",
 
         "readSchemesForCaregiverPage",
+        "readSchemesForCaregiverGroupPage",
 
         "createSchemeDeviceControl",
         "readSchemeDeviceControl",
@@ -5984,6 +6371,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "readProfessionalCaregiverWithDto",
         "updateProfessionalCaregiverWithDto",
         "deleteProfessionalCaregiverWithDto",
+        "deleteAndReplaceProfessionalCaregiverWithDto",
 
         "createProfessionalCaregiverPhoneNumberWithDto",
         "createProfessionalCaregiverPhoneNumberList",
@@ -6013,7 +6401,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "readRelationalCaregiverNoteDtoPage",
         "readRelationalCaregiverNoteWithDto",
         "createRelationalCaregiverNoteWithDto",
-            "createRelationalCaregiverNoteList",
+        "createRelationalCaregiverNoteList",
         "updateRelationalCaregiverNoteWithDto",
         "deleteRelationalCaregiverNoteWithDto",
 
@@ -6035,7 +6423,44 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "readRelationalCaregiverHoliday",
         "updateRelationalCaregiverHoliday",
         "deleteRelationalCaregiverHoliday",
-        "createRelationalCaregiverHolidayList"
+        "createRelationalCaregiverHolidayList",
+
+        "isPinIdUnique",
+
+        "createCaregiverGroupWithDto",
+        "readCaregiverGroupPage",
+        "searchCaregiverGroups",
+        "readCaregiverGroupVisualViewInformation",
+        "readCaregiverGroupDto",
+        "updateCaregiverGroupWithDto",
+        "deleteCaregiverGroupsWithDto",
+        "readCaregiverGroupMembersPage",
+        "createCaregiverGroupMemberLink",
+        "deleteCaregiverGroupMemberLink",
+
+        "createCareProviderAvailability",
+        "readCareProviderAvailability",
+        "readCaregiverGroupHolidayPage",
+        "createCaregiverGroupHoliday",
+        "readCaregiverGroupHoliday",
+        "updateCaregiverGroupHoliday",
+        "deleteCaregiverGroupHoliday",
+        "createCaregiverGroupHolidayList",
+
+        "createCaregiverGroupPhoneNumberWithDto",
+        "createCaregiverGroupPhoneNumberListWithDto",
+        "readCaregiverGroupPhoneNumberDto",
+        "readCaregiverGroupPhoneNumberDtoPage",
+        "updateCaregiverGroupPhoneNumberWithDto",
+        "deleteCaregiverGroupPhoneNumber",
+
+        "readCaregiverGroupNoteDtoPage",
+        "readCaregiverGroupNoteDto",
+        "createCaregiverGroupNoteWithDto",
+        "createCaregiverGroupNoteListWithDto",
+        "updateCaregiverGroupNoteWithDto",
+        "deleteCaregiverGroupNote",
+
     ],
     deviceManagementService: [
         "readDevicesForSubscriberResidencePage",
@@ -6075,6 +6500,7 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
         "getCodeOfHomeUnitWithPhoneNumber",
 
         "createDeviceCharacteristicWithDto",
+        "createDeviceCharacteristicList",
         "readDeviceCharacteristicWithDto",
         "updateDeviceCharacteristicWithDto",
         "deleteDeviceCharacteristicWithDto",
@@ -6256,9 +6682,13 @@ angular.module("verklizan.umox.common.html5.vkz-webrequests.proxy").constant("ur
     ],
     contractManagementService: [
         "createSubscriberDeviceLink",
+        "createSubscriberDeviceDtoLink",
         "deleteSubscriberDeviceLink",
+        "deleteSubscriberDeviceDtoLink",
         "createResidenceDeviceLink",
+        "createResidenceDeviceDtoLink",
         "deleteResidenceDeviceLink",
+        "deleteResidenceDeviceDtoLink",
 
         "createTerminationReason",
         "readTerminationReason",
@@ -6856,6 +7286,11 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('res
             serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
             authorizationTaskConstants.scheme_read
         ),
+        readSchemesForCaregiverGroupPage: umoOperationFactory.createSecureProxyOperation(
+            umoxServiceUrls.residenceManagementService.readSchemesForCaregiverGroupPage,
+            serviceRequestBodyFactory.createComplexPageBody('caregiverGroupId'),
+            authorizationTaskConstants.scheme_read
+        ),
 
         createSchemeDeviceControl: umoOperationFactory.createSecureProxyOperation(
             umoxServiceUrls.residenceManagementService.createSchemeDeviceControl,
@@ -7395,10 +7830,16 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('sub
                 authorizationTaskConstants.subscriberState_delete
             ),
 
-            readSubscriberStateHistoryDtoPage :  umoOperationFactory.createSecureProxyOperation(
+            readSubscriberStateHistoryDtoPage: umoOperationFactory.createSecureProxyOperation(
                 umoxServiceUrls.subscriberManagementService.readSubscriberStateHistoryDtoPage,
                 serviceRequestBodyFactory.createComplexPageBody('subscriberId'),
                 authorizationTaskConstants.subscriber_read
+            ),
+
+            deleteSubscriberStateHistory: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.deleteSubscriberStateHistory,
+                serviceRequestBodyFactory.createComplexPageBody('subscriberStateHistoryId'),
+                authorizationTaskConstants.subscriber_update
             ),
 
             readSubscriberCaregiverLink: umoOperationFactory.createSecureProxyOperation(
@@ -7539,7 +7980,45 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('sub
                 umoxServiceUrls.subscriberManagementService.readSubscribersForCaregiverPage,
                 serviceRequestBodyFactory.createComplexPageBody('caregiverId'),
                 authorizationTaskConstants.subscriber_read
+            ),
+            readSubscribersForCaregiverGroupPage: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.readSubscribersForCaregiverGroupPage,
+                serviceRequestBodyFactory.createComplexPageBody('caregiverGroupId'),
+                authorizationTaskConstants.subscriber_read
+            ),
+
+            updateStateOfSubscriberWithSpecificTask: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.updateStateOfSubscriberWithSpecificTask,
+                serviceRequestBodyFactory.createParameteredBody('subscriberId', 'subscriberStateId', 'subscriberStateChangeData'),
+                authorizationTaskConstants.subscriber_update_subscriberState
+            ),
+
+            readSubscriberStateChangeReasonPage: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.readSubscriberStateChangeReasonPage,
+                serviceRequestBodyFactory.createSimplePageBody,
+                authorizationTaskConstants.subscriberStateChangeReason_read
+            ),
+            readSubscriberStateChangeReason: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.readSubscriberStateChangeReason,
+                serviceRequestBodyFactory.createParameteredBody('subscriberStateChangeReasonId'),
+                authorizationTaskConstants.subscriberStateChangeReason_read
+            ),
+            updateSubscriberStateChangeReason: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.updateSubscriberStateChangeReason,
+                serviceRequestBodyFactory.createParameteredBody("subscriberStateChangeReason"),
+                authorizationTaskConstants.subscriberStateChangeReason_update
+            ),
+            deleteSubscriberStateChangeReason: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.deleteSubscriberStateChangeReason,
+                serviceRequestBodyFactory.createParameteredBody('subscriberStateChangeReason'),
+                authorizationTaskConstants.subscriberStateChangeReason_delete
+            ),
+            createSubscriberStateChangeReason: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.subscriberManagementService.createSubscriberStateChangeReason,
+                serviceRequestBodyFactory.createParameteredBody('subscriberStateChangeReason'),
+                authorizationTaskConstants.subscriberStateChangeReason_create
             )
+           
         };
     }]);
 
@@ -8172,6 +8651,11 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('use
                 serviceRequestBodyFactory.createParameteredBody('username', 'newPassword'),
                 authorizationTaskConstants.any_user_update
             ),
+            selfChangeUserPassword: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.userManagementService.selfChangeUserPassword,
+                serviceRequestBodyFactory.createParameteredBody('username', 'oldPassword', 'newPassword'),
+                authorizationTaskConstants.none
+            ),
             changePassword: umoOperationFactory.createSecureProxyOperation(
                 umoxServiceUrls.userManagementService.changePassword,
                 serviceRequestBodyFactory.createParameteredBody('oldPassword', 'newPassword'),
@@ -8240,6 +8724,11 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('use
             readRoleDtoPage: umoOperationFactory.createSecureProxyOperation(
                 umoxServiceUrls.userManagementService.readRoleDtoPage,
                 serviceRequestBodyFactory.createParameterlessBody,
+                authorizationTaskConstants.role_read
+            ),
+            readUserRoleDtoPage: umoOperationFactory.createSecureProxyOperation(
+                umoxServiceUrls.userManagementService.readUserRoleDtoPage,
+                serviceRequestBodyFactory.createParameteredBody("username"),
                 authorizationTaskConstants.role_read
             ),
             deleteRoleDto: umoOperationFactory.createSecureProxyOperation(
@@ -8441,7 +8930,7 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.proxy').factory('wel
             ),
             postponeCallBackAppointments: umoOperationFactory.createSecureProxyOperation(
                 umoxServiceUrls.wellBeingDataManagementService.postponeCallBackAppointments,
-                serviceRequestBodyFactory.createParameteredBody('filters', 'postponeMinutes', 'postponeToMoment'),
+                serviceRequestBodyFactory.createParameteredBody('filters', 'postponeMinutes', 'postponeToMoment', 'message'),
                 authorizationTaskConstants.appointment_update
             ),
             updateCallBackAppointmentDetails: umoOperationFactory.createSecureProxyOperation(
@@ -8599,8 +9088,8 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.service').provider('
 );
 
 angular.module('verklizan.umox.common.html5.vkz-webrequests.service').service('loginService',
-    ['$q', '$window', 'securityTokenService', 'hashService', 'loginServiceProxy', 'userManagementServiceProxy', 'authorizationTaskConstants', 'taskAuthorizationService', 'moduleAuthorizationService', 'debugService', function ($q, $window, securityTokenService, hashService, loginServiceProxy, userManagementServiceProxy,
-                authorizationTaskConstants, taskAuthorizationService, moduleAuthorizationService, debugService) {
+    ['$q', '$window', 'securityTokenService', 'hashService', 'loginServiceProxy', 'taskAuthorizationService', 'moduleAuthorizationService', 'debugService', 'cachedSessionStorageService', function ($q, $window, securityTokenService, hashService, loginServiceProxy,
+        taskAuthorizationService, moduleAuthorizationService, debugService, cachedSessionStorageService) {
         'use strict';
 
         // =======================
@@ -8618,7 +9107,19 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.service').service('l
 
             var hashedPassword = hashService.CreatePasswordHash(username, password);
 
-            return loginServiceProxy.login(username, hashedPassword, moduleAuthorizationService.getApplicationSupportedModules()).then(loginSuccesCallback);
+            return loginServiceProxy
+                .login(username, hashedPassword, moduleAuthorizationService.getApplicationSupportedModules())
+                .then(loginSuccesCallback);
+        }
+
+        this.validate2FA = function (sig_request) {
+            if ($window.isNullOrUndefined(sig_request)) {
+                return $q.reject(new Error('signature missing'));
+            }
+
+            return loginServiceProxy
+                .validate2FA(sig_request, moduleAuthorizationService.getApplicationSupportedModules())
+                .then(tfaSuccessCallBack);
         }
 
         this.logout = function () {
@@ -8637,6 +9138,10 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.service').service('l
             return amountOfLogins;
         }
 
+        this.buildPassageIdRedirectUri = function (clientId, clientState) {
+            return loginServiceProxy.buildPassageIdRedirectUri(clientId, clientState);
+        }
+
         // =======================
         // Private Methods
         // =======================
@@ -8647,17 +9152,57 @@ angular.module('verklizan.umox.common.html5.vkz-webrequests.service').service('l
             //get token
             if (isValid === true) {
                 amountOfLogins++;
-                securityTokenService.setToken(response.headers("Identity"));
+
+                // If the TFAToken is not returned, TFA is disabled and login should continue
+                if (!response.headers("Token") && response.headers("Identity")) {
+
+                    securityTokenService.setToken(response.headers("Identity"));
+
+                    // We remove the token if it exists and login successful as it's not needed anymore
+                    if (cachedSessionStorageService.getSessionStorageItem("tkn")) {
+                        cachedSessionStorageService.removeSessionStorageItem("tkn")
+                    }
+
+                    // We remove the one-time token if it exists and login successful as it's not needed anymore
+                    if (cachedSessionStorageService.getSessionStorageItem("ott")) {
+                        cachedSessionStorageService.removeSessionStorageItem("ott")
+                    }
+                    // We remove the usr token if exists and login successful as it's not needed anymore
+                    if (cachedSessionStorageService.getSessionStorageItem("usr")) {
+                        cachedSessionStorageService.removeSessionStorageItem("usr")
+                    }
+                }
+
                 return $q.resolve(response);
             } else {
                 return $q.reject(new Error('_LoginError_Failed_'));
             }
         };
 
+        var tfaSuccessCallBack = function (response) {
+            var isValid = response.data.Validate2FAResult;
+
+            //get token
+            if (isValid === true) {
+
+                amountOfLogins++;
+                securityTokenService.setToken(response.headers("Identity"));
+
+                // We remove the token if it exists and login successful as it's not needed anymore
+                if (cachedSessionStorageService.getSessionStorageItem("tkn")) {
+                    cachedSessionStorageService.removeSessionStorageItem("tkn")
+                }
+
+                return $q.resolve(response);
+            } else {
+                return $q.reject(new Error('_LoginError_Failed_'));
+            }
+        }
+
         var logout = function () {
             return loginServiceProxy.logout()
-                    .then(logoutSuccesCallback)
-                    .catch(logoutErrorCallback);
+                .then(logoutSuccesCallback)
+                .catch(logoutErrorCallback);
         };
 
         var logoutSuccesCallback = function (response) {
@@ -8752,6 +9297,15 @@ function () {
                 var hashedNewPassword = hashService.CreatePasswordHash(username, newPassword);
 
                 return userManagementServiceProxy.changeUserPassword(hashedOldPassword, hashedNewPassword);
+            },
+
+            //user change his password when still having knownledge of the old password
+            //different from changePassword in the sense that it doesn't require task validation
+            selfChangeUserPassword: function (username, oldPassword, newPassword) {
+                var hashedOldPassword = hashService.CreatePasswordHash(username, oldPassword);
+                var hashedNewPassword = hashService.CreatePasswordHash(username, newPassword);
+
+                return userManagementServiceProxy.selfChangeUserPassword(username, hashedOldPassword, hashedNewPassword);
             },
 
             //resets the logged in user, e.g. when logging out.

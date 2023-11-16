@@ -1,4 +1,4 @@
-﻿angular.module('verklizan.umox.mobile').config(
+﻿angular.module('enovation.umox.mobile').config(
     function ($routeProvider, $httpProvider, $compileProvider, USER_ROLES, settingsServiceProvider,
         localisationServiceProvider, moduleAuthorizationServiceProvider, authorizationModuleConstants,
         config, umoxServiceUrlsProvider) {
@@ -241,6 +241,7 @@
         $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|tel|file|ms-appx|x-wmapp0):/);
 
         settingsServiceProvider.addSetting({ name: "LastUsedUsername" });
+        settingsServiceProvider.addSetting({ name: "PomasServiceExists" });
         settingsServiceProvider.addSetting({ name: "UserSettings", options: { needsParsing: true } });
         settingsServiceProvider.addSetting({ name: "AppearanceSettings", options: { needsParsing: true } });
 

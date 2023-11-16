@@ -11,7 +11,7 @@
   ],
   "license": "None",
   "dependencies": {
-    "vkz-cordova": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-angular-cordova#dc1de81d"
+    "vkz-cordova": "git+https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-angular-cordova#dc1de81d"
   }
 }
  

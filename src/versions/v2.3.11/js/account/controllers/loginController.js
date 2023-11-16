@@ -1,6 +1,6 @@
 ﻿angular.module('verklizan.umox.mobile.account').controller('loginController',
     function ($scope, $routeParams, pushNotificationSettingsService, 
-        loginServiceWrapper, navigationService, userDataManager, settingsService, config, organizationSettingsService,
+        loginServiceWrapper, navigationService, userDataManager, settingsService, userSettingsService, config, organizationSettingsService,
         RejectedResult, USER_ROLES) {
         'use strict';
 
@@ -99,8 +99,10 @@
             resetErrors();
             if (organizationSettingsService.getSaveUsernameAfterLoginInResponder()) {
                 settingsService.setLastUsedUsername($scope.username);
+                userSettingsService.setPomasAuthenticationCredentials(btoa($scope.username + ":" + $scope.password));
             } else {
                 settingsService.clearLastUsedUsername();
+                userSettingsService.clearPomasAuthenticationCredentials();
             }
         }
 

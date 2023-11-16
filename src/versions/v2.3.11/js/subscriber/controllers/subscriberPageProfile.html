@@ -13,9 +13,17 @@
                     <td class="item" i18n="_SubscriberPageProfile_BirthDate_" />
                     <td ng-bind-with-default="profileInfo.Identity.BirthDate | MStoJSDate" pr-default-localized-key="_Unknown_" />                       
                 </tr>
-                <tr>
+                <tr ng-show="showSubscriptionNumberOfSubscriberInResponder">
                     <td class="item" i18n="_SubscriberPageProfile_ClientNr_" />
                     <td ng-bind-with-default="profileInfo.SubscriptionNumber" pr-default-localized-key="_Unknown_"/>                    
+                </tr>
+                <tr ng-show="showAuthenticationIdOfSubscriberInResponder">
+                    <td class="item" i18n="_SubscriberPageProfile_AuthenticationId_" />
+                    <td ng-bind-with-default="profileInfo.AuthenticationId" pr-default-localized-key="_Unknown_"/>                    
+                </tr>
+                <tr ng-show="showCitizenServiceNumberOfSubscriberInResponder">
+                    <td class="item" i18n="_SubscriberPageProfile_CitizenServiceNumber_" />
+                    <td ng-bind-with-default="profileInfo.CitizenServiceNumber" pr-default-localized-key="_Unknown_"/>                    
                 </tr>
                 <tr>                    
                     <td class="item" i18n="_SubscriberPageProfile_Status_" />
@@ -29,6 +37,10 @@
                         </div>
                     </td>                    
                     <td ng-show="subscriberPhoneNumbers.TotalCount == 0" i18n="_Unknown_" />
+                </tr>
+                <tr>                    
+                    <td class="item" i18n="_SubscriberPageProfile_SubscriberRemark_" />
+                    <td ng-bind-with-default="profileInfo.DefaultRemark" pr-default-localized-key="_Unknown_"/>    
                 </tr>
             </table>
 
@@ -55,9 +67,14 @@
                     <td ng-show="residenceInfo.DefaultPhoneNumber"><a href="tel:{{residenceInfo.DefaultPhoneNumber}}" ng-bind="residenceInfo.DefaultPhoneNumber" /></td>
                     <td ng-show="!residenceInfo.DefaultPhoneNumber" i18n="_Unknown_" />
                 </tr>
+                <tr>
+                    <td class="item" i18n="_SubscriberPageProfile_ResidenceRemark_" />
+                    <td ng-bind-with-default="residenceInfo.DefaultRemark" pr-default-localized-key="_Unknown_"/>
+                </tr>
             </table>
 
             <h4 class="textDefault" i18n="_SubscriberPageProfile_Notes_" />
+            <p ng-show="profileInfo.DefaultMemo" ng-bind="profileInfo.DefaultMemo"></p>
             <div class="touchArea notesTouchArea" ng-click="toNotes()">
                 <span ng-bind="notesInfo.TotalCount" />
                 <span class="textGray" i18n="_SubscriberPageProfile_NoteCount_" />

@@ -60,13 +60,13 @@
 
             console.log("app is now starting with angularjs");
 
-            window.verklizan.loadConfig("verklizan.umox.mobile", "../config.json").then(startApp);
+            window.verklizan.loadConfig("enovation.umox.mobile", "../config.json").then(startApp);
 
             function startApp() {
                 // After the locale file has been loaded completely, then bootstrapper is invoked.
                 // This must be done manually because we need to be certain that the locale file is loaded fully, 
                 // othwerwise the locale will not be applied.
-                angular.bootstrap(document, ["verklizan.umox.mobile"]);
+                angular.bootstrap(document, ["enovation.umox.mobile"]);
             };
         });
     </script>

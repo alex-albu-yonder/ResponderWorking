@@ -1,6 +1,6 @@
 ﻿angular.module('verklizan.umox.mobile.subscriber').controller('subscriberPageMapController',
     function subscriberPageMapController($routeParams, $scope, subscriberDataManager, uiMapHelperService, launchNavigatorService,
-        localizedNotificationService, promiseLoadingSpinnerService) {
+        localizedNotificationService, mapConstants, promiseLoadingSpinnerService) {
         'use strict';
 
         //#region Private Fields
@@ -68,7 +68,13 @@
             var residenceAdress = residenceInfo.StreetAddress;
 
             if (residenceIsValid(residenceAdress)) {
-                var loadMapPromise = uiMapHelperService.initializeMap($scope.myMap, residenceAdress.LongAddress).catch(uiMapError).finally(mapIsDoneLoading);
+                var loadMapPromise = 
+                    uiMapHelperService.getCoordinatesOfAddress(residenceAdress.LongAddress)
+                    .then(function (coordinates) { 
+                        return uiMapHelperService.initializeMap($scope.myMap, coordinates, mapConstants.markerTypes.responder, mapConstants.markerTypes.subscriberHome); 
+                    })
+                    .catch(uiMapError)
+                    .finally(mapIsDoneLoading);
                 promiseLoadingSpinnerService.addLoadingPromise(loadMapPromise);
                 destinationAddres = residenceAdress.LongAddress;
             } else {

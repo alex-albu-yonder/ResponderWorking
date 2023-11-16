@@ -25,14 +25,14 @@
     "angular": "1.5.8",
     "jquery": "~3.1.0",
     "jasmine-promise-matchers": "~2.0.2",
-    "vkz-utilities": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-utilities#70d9deff"
+    "vkz-utilities": "git+https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-utilities#3c54385c311e6ca22d4ebe80a5ca4351005875e2"
   },
-  "_release": "4569e876df",
+  "_release": "2752883ed0",
   "_resolution": {
     "type": "commit",
-    "commit": "4569e876df0a39d25ba2cb3caeab72c83af0fefa"
+    "commit": "2752883ed0bccbd4bce29399b910561e71e25c03"
   },
-  "_source": "http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-webrequests",
-  "_target": "4569e876df0a39d25ba2cb3caeab72c83af0fefa",
-  "_originalSource": "git+http://tfs-verklizan:8080/tfs/Verklizan%20UmoX/_git/vkz-webrequests"
+  "_source": "https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-webrequests",
+  "_target": "2752883ed0bccbd4bce29399b910561e71e25c03",
+  "_originalSource": "git+https://ado01.verklizan.enovation.group/Verklizan%20UmoX/_git/vkz-webrequests"
 }

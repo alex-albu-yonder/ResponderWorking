@@ -25,6 +25,11 @@
         </td>
         <td ng-show="!careRequestItem.SubscriberPhoneNumber" i18n="_Unknown_" />
     </tr>
+    <tr ng-if="careRequestItem.AlarmDeviceWebsiteRequest && navigationFromListItemEnabled">
+        <td colspan="2">
+            <a ng-click="openAlarmDeviceWebsite()" i18n="_HomePage_CareRequests_AlarmDeviceUrl_"/>
+        </td>
+    </tr>
 </table>
 
 <div class="smallContentPadding multiLineContent">{{careRequestItem.Reason}}</div>

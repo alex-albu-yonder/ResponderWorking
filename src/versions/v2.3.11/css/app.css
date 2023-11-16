@@ -280,6 +280,23 @@ td.item {
     height: 100%;
 }
 
+div.navigationButtonInMap {
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    cursor: pointer;
+    padding: 2px;
+    margin: 5px;
+}
+div.navigationButtonInMap > div {
+    background: url("../../../shared/img/actions/Navigate_black_128x128.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 36px;
+    width: 36px;
+}
+
 /********************
 	Layout classes
    

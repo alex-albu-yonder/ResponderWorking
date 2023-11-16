@@ -21,6 +21,11 @@
                            di-keyboard-helper-target ng-model="baseUrl.port" />
                 </div>
                 <div>
+                    <label i18n="_Settings_PomasPort_"></label>
+                    <input class="input-FullWidth" type="number" i18n-placeholder="_FirstStartUrl_PomasPortPlaceholder_"
+                           di-keyboard-helper-target ng-model="pomasBaseUrl.port" />
+                </div>
+                <div>
                     <label i18n="_Settings_Path_"></label>
                     <div ng-show="urlForm.fPath.$invalid && isSubmitted">
                         <span ng-show="urlForm.fPath.$error.required" i18n="_Settings_PathRequired_" class="error"></span>

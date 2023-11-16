@@ -12,9 +12,10 @@
                      src="../../shared/img/actions/NewNote_black_128x128.png" 
                      class="smallImageSize touchArea"
                      ng-click="createNewNote(careRequest.SubscriberId)" />
-                <img ng-show="canShowMaps()" src="../../shared/img/actions/Navigate_black_128x128.png" 
+                <img ng-show="canShowMaps()" ng-disabled="subscriberAddressCoordinates === null"
+                     src="../../shared/img/actions/Navigate_black_128x128.png" 
                      class="smallImageSize touchArea"
-                     ng-click="openNavigation(careRequest.Adress)" />
+                     ng-click="openNavigation(subscriberAddressCoordinates)" />
             </span>
             <span>
                 <care-request-list-item pr-navigation-from-list-item-enabled="true"
